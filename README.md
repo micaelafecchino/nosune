@@ -8,6 +8,10 @@ Etapa de prototipo de diseño. Ver [`prototipo/`](prototipo/).
 
 **Versión web del prototipo:** https://micaelafecchino.github.io/nosune/ (requiere GitHub Pages activado).
 
+## Negocio
+
+- [Investigación de mercado y segmento de entrada](negocio/investigacion-de-mercado.md): tamaño de mercado en LatAm, el dolor en números, pagadores, competencia, elección del segmento y guía de entrevistas.
+
 ## Ideas centrales
 
 - **Perfiles:** cada persona es dueña de su perfil y puede invitar colaboradores. También se pueden crear perfiles sin cuenta (un bebé, un abuelo) que administra otra persona y que más adelante se pueden transferir.

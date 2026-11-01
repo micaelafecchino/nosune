@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nosune · prototipo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #E7ECEA; --ink: #16201D; --muted: #4A5653; --accent: #0E6B5B; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    display: flex; align-items: center; justify-content: center; gap: 56px;
+    min-height: 100vh; padding: 24px;
+  }
+  aside { width: 260px; display: flex; flex-direction: column; gap: 16px; }
+  aside h1 { margin: 0; font-size: 28px; letter-spacing: -0.01em; }
+  aside p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+  #nav { display: flex; flex-direction: column; gap: 4px; }
+  #nav a {
+    color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 600;
+    padding: 10px 12px; border-radius: 10px; min-height: 40px; display: flex; align-items: center;
+  }
+  #nav a:hover { background: rgba(22, 32, 29, 0.06); }
+  #nav a[aria-current="page"] { background: #FFFFFF; color: var(--accent); }
+  #stage { position: relative; overflow: hidden; border-radius: 44px; box-shadow: 0 30px 60px rgba(22, 32, 29, 0.18), 0 0 0 10px #16201D; flex-shrink: 0; }
+  #screen { width: 390px; transform-origin: top left; position: absolute; top: 0; left: 0; }
+  body.mobile { padding: 0; gap: 0; display: block; background: #F4F6F5; }
+  body.mobile aside { display: none; }
+  body.mobile #stage { border-radius: 0; box-shadow: none; }
+</style>
+<style id="screen-style"></style>
+</head>
+<body>
+  <aside>
+    <h1>Nosune</h1>
+    <p>Prototipo clickeable v1. Navegá con la barra de abajo del celular o elegí una pantalla.</p>
+    <nav id="nav" aria-label="Pantallas"></nav>
+    <p>Los datos son de ejemplo.</p>
+  </aside>
+  <div id="stage"><div id="screen"></div></div>
+  <script src="viewer/runtime.js"></script>
+</body>
+</html>

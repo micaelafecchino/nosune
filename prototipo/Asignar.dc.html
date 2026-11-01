@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Nosune · Asignar responsable</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0E6B5B;text-decoration:none}a:hover{color:#0A4F43}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F4F6F5; color: #16201D; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; overflow: hidden">
+
+  <header style="padding: 48px 12px 8px; display: flex; align-items: center; justify-content: space-between">
+    <a href="Consulta.dc.html" aria-label="Cerrar" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 999px; color: #16201D">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </a>
+    <span style="font-size: 15px; font-weight: 600">Asignar</span>
+    <span style="width: 44px"></span>
+  </header>
+
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 20px; display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">¿Quién se encarga?</h1>
+      <div style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 15px; font-weight: 700">Pedir turno con traumatología</span>
+        <span style="font-size: 13px; color: #5A6662">Para Rosa · Derivación de Clínica médica, 20 oct</span>
+      </div>
+    </div>
+
+    <sc-if value="{{saved}}" hint-placeholder-val="{{false}}">
+      <div role="status" style="background: #E3F1EE; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 15px; font-weight: 700; color: #0A4F43">Listo, quedó asignado</span>
+        <span style="font-size: 14px; line-height: 1.5; color: #16201D">{{summary}}</span>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <a href="Main.dc.html" style="min-height: 40px; padding: 0 14px; display: flex; align-items: center; border-radius: 10px; background: {{accent}}; color: #FFFFFF; font-size: 13px; font-weight: 600">Volver al inicio</a>
+          <button onClick="{{edit}}" style="min-height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #C9D3CF; background: #FFFFFF; color: #16201D; font-size: 13px; font-weight: 600; cursor: pointer">Cambiar</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{editing}}" hint-placeholder-val="{{true}}">
+      <section aria-labelledby="q1" style="display: flex; flex-direction: column; gap: 10px">
+        <h2 id="q1" style="margin: 0; font-size: 13px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">Pide el turno</h2>
+        <sc-for list="{{owners}}" as="o" hint-placeholder-count="3">
+          <button onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="{{o.row}}">
+            <span style="{{o.avatar}}">{{o.initial}}</span>
+            <span style="flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left">
+              <span style="font-size: 15px; font-weight: 600">{{o.name}}</span>
+              <span style="font-size: 12px; color: #5A6662">{{o.load}}</span>
+            </span>
+            <span style="{{o.radio}}"></span>
+          </button>
+        </sc-for>
+      </section>
+
+      <section aria-labelledby="q2" style="display: flex; flex-direction: column; gap: 10px">
+        <h2 id="q2" style="margin: 0; font-size: 13px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">Acompaña a Rosa ese día</h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <sc-for list="{{companions}}" as="c" hint-placeholder-count="4">
+            <button onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="{{c.style}}">{{c.label}}</button>
+          </sc-for>
+        </div>
+      </section>
+
+      <section aria-labelledby="q3" style="display: flex; flex-direction: column; gap: 10px">
+        <h2 id="q3" style="margin: 0; font-size: 13px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">Para cuándo</h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <sc-for list="{{dues}}" as="d" hint-placeholder-count="3">
+            <button onClick="{{d.pick}}" aria-pressed="{{d.pressed}}" style="{{d.style}}">{{d.label}}</button>
+          </sc-for>
+        </div>
+      </section>
+
+      <label style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 16px; padding: 14px; display: flex; align-items: center; gap: 12px; cursor: pointer">
+        <input type="checkbox" checked="{{notify}}" onChange="{{toggleNotify}}" style="width: 22px; height: 22px; accent-color: {{accent}}; margin: 0">
+        <span style="display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 15px; font-weight: 600">Avisar a la familia</span>
+          <span style="font-size: 12px; color: #5A6662">Juan y Laura ven quién se encarga y cuándo se resuelve</span>
+        </span>
+      </label>
+    </sc-if>
+  </main>
+
+  <sc-if value="{{editing}}" hint-placeholder-val="{{true}}">
+    <div style="padding: 12px 20px 32px; background: #F4F6F5; border-top: 1px solid #E2E7E5">
+      <button onClick="{{save}}" disabled="{{cantSave}}" style="{{saveStyle}}">{{saveLabel}}</button>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0E6B5B","options":["#0E6B5B","#2F5DA8","#6B3FA0"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { owner: null, companion: 'later', due: 'week', notify: true, saved: false };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#0E6B5B';
+    const s = this.state;
+    const people = [
+      { id: 'yo', name: 'Vos', initial: 'V', load: '1 pendiente', bg: '#E3F1EE', fg: accent },
+      { id: 'juan', name: 'Juan · hermano', initial: 'J', load: '2 pendientes · vive cerca de Rosa', bg: '#E8EEF8', fg: '#2F5DA8' },
+      { id: 'laura', name: 'Laura · cuidadora', initial: 'L', load: '1 pendiente · solo agenda y medicación', bg: '#FBEEDF', fg: '#A4500B' }
+    ];
+    const owners = people.map((p) => {
+      const on = s.owner === p.id;
+      return {
+        ...p,
+        pressed: on ? 'true' : 'false',
+        pick: () => this.setState({ owner: p.id }),
+        row: 'display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; cursor: pointer; color: #16201D; background: #FFFFFF; min-height: 64px; ' + (on ? 'border: 2px solid ' + accent + ';' : 'border: 2px solid #E2E7E5;'),
+        avatar: 'width: 40px; height: 40px; border-radius: 999px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 700; background: ' + p.bg + '; color: ' + p.fg + ';',
+        radio: 'width: 22px; height: 22px; border-radius: 999px; flex-shrink: 0; box-sizing: border-box; ' + (on ? 'border: 7px solid ' + accent + ';' : 'border: 2px solid #9AA6A2;')
+      };
+    });
+    const chip = (on) => 'min-height: 40px; padding: 0 14px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; ' + (on ? 'background: #16201D; color: #FFFFFF; border: 1px solid #16201D;' : 'background: #FFFFFF; color: #16201D; border: 1px solid #E2E7E5;');
+    const compDefs = [['yo', 'Vos'], ['juan', 'Juan'], ['laura', 'Laura'], ['later', 'Decidir después']];
+    const companions = compDefs.map(([id, label]) => ({ label, pressed: s.companion === id ? 'true' : 'false', pick: () => this.setState({ companion: id }), style: chip(s.companion === id) }));
+    const dueDefs = [['week', 'Esta semana'], ['15', 'Antes del 15/11'], ['none', 'Sin fecha']];
+    const dues = dueDefs.map(([id, label]) => ({ label, pressed: s.due === id ? 'true' : 'false', pick: () => this.setState({ due: id }), style: chip(s.due === id) }));
+    const nameOf = { yo: 'Vos', juan: 'Juan', laura: 'Laura' };
+    const dueTxt = { week: 'esta semana', '15': 'antes del 15/11', none: 'sin fecha' }[s.due];
+    let summary = '';
+    if (s.owner) {
+      summary = (s.owner === 'yo' ? 'Vos pedís el turno' : nameOf[s.owner] + ' pide el turno') + ' ' + dueTxt + '. ';
+      summary += s.companion === 'later' ? 'Quién acompaña se decide después. ' : (s.companion === 'yo' ? 'Vos acompañás a Rosa. ' : nameOf[s.companion] + ' acompaña a Rosa. ');
+      summary += s.notify ? 'Le avisamos a toda la familia.' : 'No se avisó a nadie más.';
+    }
+    const cantSave = !s.owner;
+    return {
+      accent, owners, companions, dues, summary,
+      saved: s.saved, editing: !s.saved,
+      notify: s.notify,
+      toggleNotify: () => this.setState({ notify: !this.state.notify }),
+      save: () => { if (this.state.owner) this.setState({ saved: true }); },
+      edit: () => this.setState({ saved: false }),
+      cantSave,
+      saveLabel: cantSave ? 'Elegí quién pide el turno' : 'Asignar',
+      saveStyle: 'width: 100%; min-height: 50px; border-radius: 14px; border: none; font-size: 16px; font-weight: 700; ' + (cantSave ? 'background: #DDE3E1; color: #4A5653; cursor: not-allowed;' : 'background: ' + accent + '; color: #FFFFFF; cursor: pointer;')
+    };
+  }
+}
+</script>
+</body>
+</html>

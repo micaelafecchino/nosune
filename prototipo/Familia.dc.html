@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Nosune · Perfiles y colaboradores</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0E6B5B;text-decoration:none}a:hover{color:#0A4F43}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F4F6F5; color: #16201D; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; overflow: hidden">
+
+  <header style="padding: 52px 20px 12px; display: flex; align-items: center; justify-content: space-between">
+    <h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">Perfiles</h1>
+    <a href="NuevoPerfil.dc.html" style="height: 44px; padding: 0 16px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Crear perfil</a>
+  </header>
+
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 20px; display: flex; flex-direction: column; gap: 18px">
+
+    <section aria-labelledby="lista" style="display: flex; flex-direction: column; gap: 8px">
+      <h2 id="lista" style="margin: 0; font-size: 13px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">Perfiles a los que tenés acceso</h2>
+      <sc-for list="{{profiles}}" as="p" hint-placeholder-count="4">
+        <button onClick="{{p.pick}}" aria-pressed="{{p.pressed}}" style="{{p.row}}">
+          <span style="{{p.avatar}}">{{p.initial}}</span>
+          <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left">
+            <span style="font-size: 15px; font-weight: 700">{{p.name}} <span style="font-weight: 500; color: #5A6662">· {{p.rel}}</span></span>
+            <span style="font-size: 12px; color: #5A6662">{{p.desc}}</span>
+          </span>
+          <span style="{{p.badgeStyle}}">{{p.badge}}</span>
+        </button>
+      </sc-for>
+    </section>
+
+    <section aria-labelledby="colab" style="display: flex; flex-direction: column; gap: 10px">
+      <h2 id="colab" style="margin: 0; font-size: 18px; font-weight: 700">Colaboradores de {{sel.name}}</h2>
+      <p style="margin: 0; font-size: 13px; line-height: 1.45; color: #5A6662">{{sel.ownership}}</p>
+      <div style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 18px; display: flex; flex-direction: column">
+        <sc-for list="{{sel.collabs}}" as="c" hint-placeholder-count="2">
+          <div style="display: flex; align-items: center; gap: 12px; padding: 14px; border-bottom: 1px solid #EEF1F0">
+            <span style="{{c.avatar}}">{{c.initial}}</span>
+            <span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">{{c.name}}</span><span style="font-size: 13px; color: #5A6662">{{c.role}}</span></span>
+          </div>
+        </sc-for>
+        <sc-if value="{{sel.canInvite}}" hint-placeholder-val="{{true}}">
+          <button style="min-height: 52px; border: none; background: transparent; color: {{accent}}; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M19 8v6M16 11h6"/></svg>Invitar colaborador</button>
+        </sc-if>
+        <sc-if value="{{sel.cannotInvite}}" hint-placeholder-val="{{false}}">
+          <span style="padding: 14px; font-size: 13px; color: #5A6662; text-align: center">Solo Héctor puede sumar o quitar colaboradores</span>
+        </sc-if>
+      </div>
+    </section>
+
+    <sc-if value="{{sel.hasFolders}}" hint-placeholder-val="{{false}}">
+      <section aria-labelledby="carp" style="display: flex; flex-direction: column; gap: 10px">
+        <h2 id="carp" style="margin: 0; font-size: 13px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">Carpetas de tu perfil</h2>
+        <a href="Carpeta.dc.html" style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 16px; padding: 14px; display: flex; align-items: center; gap: 12px; color: #16201D">
+          <span style="width: 42px; height: 42px; border-radius: 12px; background: #EFE8F7; color: #6B3FA0; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          </span>
+          <span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 700">Cáncer de mama</span><span style="font-size: 12px; color: #5A6662">Privada · la ven vos y Juan · 14 registros</span></span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A6662" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </a>
+      </section>
+    </sc-if>
+
+    <section aria-labelledby="ficha" style="background: #16201D; color: #FFFFFF; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+      <h2 id="ficha" style="margin: 0; font-size: 15px; font-weight: 700">Ficha de emergencia · {{sel.name}}</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px">
+        <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #B8C4C0; text-transform: uppercase; letter-spacing: 0.05em">Alergias</span><span style="font-size: 14px; font-weight: 600">{{sel.allergy}}</span></div>
+        <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #B8C4C0; text-transform: uppercase; letter-spacing: 0.05em">Cobertura</span><span style="font-size: 14px; font-weight: 600">[OBRA SOCIAL]</span></div>
+      </div>
+    </section>
+
+    <sc-if value="{{sel.isRosa}}" hint-placeholder-val="{{false}}">
+      <section aria-labelledby="nov" style="display: flex; flex-direction: column; gap: 10px">
+        <h2 id="nov" style="margin: 0; font-size: 13px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">Novedades de Rosa</h2>
+        <a href="Asignar.dc.html" style="background: #FBEEDF; border-radius: 16px; padding: 14px; display: flex; align-items: center; gap: 12px; color: #3B2A1C">
+          <span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700; color: #7A3A06">El turno con traumatología no tiene responsable</span><span style="font-size: 12px">Pendiente desde el 20 oct</span></span>
+          <span style="font-size: 13px; font-weight: 700; color: #7A3A06">Asignar</span>
+        </a>
+        <div style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 18px; display: flex; flex-direction: column">
+          <div style="display: flex; gap: 12px; padding: 14px; align-items: flex-start">
+            <span style="width: 30px; height: 30px; border-radius: 999px; background: #E8EEF8; color: #2F5DA8; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0">J</span>
+            <span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px"><b>Juan</b> cargó el turno de laboratorio</span><span style="font-size: 12px; color: #5A6662">Hace 2 h · vie 7 nov, 7:30</span></span>
+          </div>
+          <div style="height: 1px; background: #E2E7E5; margin: 0 14px"></div>
+          <div style="display: flex; gap: 12px; padding: 14px; align-items: flex-start">
+            <span style="width: 30px; height: 30px; border-radius: 999px; background: #FBEEDF; color: #A4500B; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0">L</span>
+            <span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px"><b>Laura</b> marcó Enalapril de las 8:00 como tomado</span><span style="font-size: 12px; color: #5A6662">Hoy, 8:05</span></span>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+  </main>
+
+  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #E2E7E5; padding: 8px 8px 28px">
+    <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a>
+    <a href="Agenda.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Agenda</a>
+    <a href="Historia.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Historia</a>
+    <a href="Familia.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: {{accent}}; font-size: 11px; font-weight: 700">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/></svg>Perfiles</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0E6B5B","options":["#0E6B5B","#2F5DA8","#6B3FA0"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { who: 'rosa' };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#0E6B5B';
+    const av = (bg, fg, size) => 'width: ' + size + 'px; height: ' + size + 'px; border-radius: 999px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: ' + Math.round(size * 0.4) + 'px; background: ' + bg + '; color: ' + fg + ';';
+    const badgeKinds = {
+      mine: 'background: #E3F1EE; color: #0A4F43;',
+      managed: 'background: #EEF1F0; color: #2A3532;',
+      invited: 'background: #E8EEF8; color: #234A87;'
+    };
+    const defs = [
+      { id: 'yo', name: 'Vos', rel: 'tu perfil', initial: 'V', bg: '#E3F1EE', fg: accent, kind: 'mine', badge: 'Tu cuenta', desc: 'Sos dueño de tu perfil',
+        ownership: 'Es tu perfil: decidís quién lo ve y qué ve cada colaborador, incluso carpeta por carpeta.',
+        allergy: 'Ninguna conocida', hasFolders: true, canInvite: true,
+        collabs: [{ initial: 'J', name: 'Juan · hermano', role: 'Ve solo la carpeta “Cáncer de mama”', bg: '#E8EEF8', fg: '#2F5DA8' }] },
+      { id: 'rosa', name: 'Rosa', rel: 'mamá', initial: 'R', bg: accent, fg: '#FFFFFF', kind: 'managed', badge: 'Sin cuenta', desc: 'Lo administrás vos',
+        ownership: 'Rosa no usa la app: vos creaste y administrás su perfil. Si algún día abre su cuenta, se lo podés transferir.',
+        allergy: 'Penicilina', hasFolders: false, canInvite: true,
+        collabs: [
+          { initial: 'J', name: 'Juan · hermano', role: 'Ve y edita todo', bg: '#E8EEF8', fg: '#2F5DA8' },
+          { initial: 'L', name: 'Laura · cuidadora', role: 'Solo agenda y medicación', bg: '#FBEEDF', fg: '#A4500B' }
+        ] },
+      { id: 'lola', name: 'Lola', rel: 'hija · 2 meses', initial: 'L', bg: '#EFE8F7', fg: '#6B3FA0', kind: 'managed', badge: 'Sin cuenta', desc: 'Lo administrás vos',
+        ownership: 'Perfil de una recién nacida: lo administrás vos y lo compartís con quien la cuida.',
+        allergy: 'Ninguna conocida', hasFolders: false, canInvite: true,
+        collabs: [{ initial: 'N', name: 'Nico · papá', role: 'Ve y edita todo', bg: '#E8EEF8', fg: '#2F5DA8' }] },
+      { id: 'hector', name: 'Héctor', rel: 'papá', initial: 'H', bg: '#E8EEF8', fg: '#2F5DA8', kind: 'invited', badge: 'Cuenta propia', desc: 'Te invitó como colaborador',
+        ownership: 'Héctor es dueño de su perfil y te sumó como colaborador. Él decide quién más entra.',
+        allergy: '[ALERGIAS]', hasFolders: false, canInvite: false,
+        collabs: [{ initial: 'V', name: 'Vos', role: 'Ve y edita turnos y medicación', bg: '#E3F1EE', fg: accent }] }
+    ];
+    const profiles = defs.map((p) => {
+      const on = this.state.who === p.id;
+      return {
+        ...p,
+        pressed: on ? 'true' : 'false',
+        pick: () => this.setState({ who: p.id }),
+        row: 'display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; cursor: pointer; color: #16201D; background: #FFFFFF; min-height: 64px; ' + (on ? 'border: 2px solid ' + accent + ';' : 'border: 2px solid #E2E7E5;'),
+        avatar: av(p.bg, p.fg, 42),
+        badgeStyle: 'font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 999px; white-space: nowrap; ' + badgeKinds[p.kind]
+      };
+    });
+    const s = defs.find((p) => p.id === this.state.who);
+    const sel = {
+      ...s,
+      isRosa: s.id === 'rosa',
+      cannotInvite: !s.canInvite,
+      collabs: s.collabs.map((c) => ({ ...c, avatar: av(c.bg, c.fg, 38) }))
+    };
+    return { accent, profiles, sel };
+  }
+}
+</script>
+</body>
+</html>

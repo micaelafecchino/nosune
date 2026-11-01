@@ -6,8 +6,10 @@ Prototipo clickeable de la app mobile (8 pantallas de 390×844).
 
 Estos archivos son el **código fuente** del prototipo, hecho en el canvas de diseño de Claude. No se abren solos en el navegador, porque necesitan el editor del canvas para mostrarse.
 
-Para verlo e interactuar, usá el link del canvas (pedíselo a quien lo administra):
-https://claude.ai/artifact/QuvzAvdyBi5cPiXrEfF5y8
+Para verlo e interactuar hay dos opciones:
+
+- **Versión web:** https://micaelafecchino.github.io/nosune/ (la sirve `index.html` en la raíz, que lee estos mismos archivos).
+- **Canvas de diseño**, para editar (pedile acceso a quien lo administra): https://claude.ai/artifact/QuvzAvdyBi5cPiXrEfF5y8
 
 ## Pantallas
 

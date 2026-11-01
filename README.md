@@ -6,6 +6,8 @@ App mobile para ordenar la salud de la familia: historia clínica propia, turnos
 
 Etapa de prototipo de diseño. Ver [`prototipo/`](prototipo/).
 
+**Versión web del prototipo:** https://micaelafecchino.github.io/nosune/ (requiere GitHub Pages activado).
+
 ## Ideas centrales
 
 - **Perfiles:** cada persona es dueña de su perfil y puede invitar colaboradores. También se pueden crear perfiles sin cuenta (un bebé, un abuelo) que administra otra persona y que más adelante se pueden transferir.

@@ -70,6 +70,14 @@ button{font-family:inherit}
         <span style="font-size: 19px">{{cur.line1}}</span>
         <span style="font-size: 18px; color: #3F4A47">{{cur.line2}}</span>
       </div>
+      <sc-if value="{{isTarea}}" hint-placeholder-val="{{false}}">
+        <div role="group" aria-labelledby="cada" style="display: flex; flex-direction: column; gap: 10px">
+          <span id="cada" style="font-size: 20px; font-weight: 700">¿Cada cuánto?</span>
+          <sc-for list="{{freqs}}" as="f" hint-placeholder-count="3">
+            <button onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="{{f.style}}">{{f.label}}</button>
+          </sc-for>
+        </div>
+      </sc-if>
       <div role="group" aria-labelledby="quien" style="display: flex; flex-direction: column; gap: 10px">
         <span id="quien" style="font-size: 20px; font-weight: 700">{{cur.question}}</span>
         <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
@@ -96,7 +104,7 @@ button{font-family:inherit}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { step: 'how', type: 'turno', owner: 'juan' };
+    this.state = { step: 'how', type: 'turno', owner: 'juan', freq: 'dia' };
   }
   renderVals() {
     const accent = this.props.accent ?? '#0B5A4C';
@@ -107,11 +115,24 @@ class Component extends DCLogic {
       estudio: { label: 'Un estudio o resultado', mark: 'E', photo: 'Foto del resultado', said: '“Llegaron los resultados del análisis de sangre del 3 de octubre.”', kicker: 'Resultado', title: 'Análisis de sangre', line1: '3 de octubre', line2: 'Laboratorio [NOMBRE]', question: '¿A quién le avisamos?', done: 'Guardamos el resultado en su historia.' },
       compra: { label: 'Un remedio o compra', mark: 'R', photo: 'Foto de la caja o la receta', said: '“Hay que comprarle protectores descartables todos los meses.”', kicker: 'Compra que se repite', title: 'Protectores descartables', line1: 'Cada 30 días', line2: 'No necesita receta', question: '¿Quién se encarga?', done: 'Te vamos a avisar unos días antes de que se terminen.' },
       gasto: { label: 'Un gasto', mark: '$', photo: 'Foto del ticket', said: '“Gasté dieciocho mil quinientos en la farmacia por el Enalapril.”', kicker: 'Gasto', title: '$ 18.500 · Farmacia', line1: 'Enalapril 10 mg', line2: 'Hoy, 1 de noviembre', question: '¿Quién lo pagó?', done: 'Guardamos el gasto de $ 18.500.' },
-      tarea: { label: 'Una tarea de todos los días', mark: 'D', photo: 'Foto de la indicación', said: '“Tiene que hacer los ejercicios de rodilla todos los días a las 5 de la tarde.”', kicker: 'Tarea diaria', title: 'Ejercicios de rodilla', line1: 'Todos los días, 17:00', line2: '15 minutos', question: '¿A quién le toca?', done: 'La agregamos a las tareas de todos los días.' }
+      tarea: { label: 'Una tarea que se repite', mark: 'D', photo: 'Foto de la indicación', said: '“Tiene que hacer los ejercicios de rodilla a las 5 de la tarde.”', kicker: 'Tarea que se repite', title: 'Ejercicios de rodilla', line1: '', line2: '15 minutos', question: '¿A quién le toca?', done: '' }
     };
     const order = ['turno', 'consulta', 'estudio', 'compra', 'gasto', 'tarea'];
     const types = order.map((id) => ({ label: T[id].label, mark: T[id].mark, pick: () => this.setState({ type: id, step: 'how' }) }));
-    const cur = T[s.type];
+    const F = {
+      dia: { label: 'Todos los días', line: 'Todos los días, 17:00', done: 'Va a aparecer todos los días en las tareas.' },
+      semana: { label: 'Una vez por semana', line: 'Todos los lunes, 17:00', done: 'Va a aparecer todos los lunes en las tareas.' },
+      mes: { label: 'Una vez por mes', line: 'El día 1 de cada mes, 17:00', done: 'Va a aparecer el día 1 de cada mes en las tareas.' }
+    };
+    const cur = s.type === 'tarea' ? { ...T.tarea, line1: F[s.freq].line, done: F[s.freq].done } : T[s.type];
+    const freqs = ['dia', 'semana', 'mes'].map((id) => {
+      const on = s.freq === id;
+      return {
+        label: F[id].label, pressed: on ? 'true' : 'false',
+        pick: () => this.setState({ freq: id }),
+        style: 'min-height: 56px; border-radius: 14px; font-size: 18px; font-weight: 700; cursor: pointer; ' + (on ? 'background: #121A17; color: #FFFFFF; border: 2px solid #121A17;' : 'background: #FFFFFF; color: #121A17; border: 2px solid #CFD8D4;')
+      };
+    });
     const names = { yo: 'Yo', juan: 'Juan', laura: 'Laura', none: 'Nadie todavía' };
     const owners = ['yo', 'juan', 'laura', 'none'].map((id) => {
       const on = s.owner === id;
@@ -123,7 +144,8 @@ class Component extends DCLogic {
     });
     const prev = { recording: 'how', review: 'how' };
     return {
-      accent, types, owners, cur,
+      accent, types, owners, cur, freqs,
+      isTarea: s.type === 'tarea',
       typeLabel: cur.label,
       photoLabel: cur.photo,
       isWhat: s.step === 'what', isHow: s.step === 'how', isRecording: s.step === 'recording', isReview: s.step === 'review', isSaved: s.step === 'saved',

@@ -19,7 +19,7 @@ La app la van a usar sobre todo personas grandes, así que:
 - Alto contraste y botones de al menos 56 px de alto.
 - Una sola idea por tarjeta, pocas cosas por pantalla y palabras simples ("Va con Juan", "Le toca a Laura").
 - Sin scroll horizontal ni menús desplegables.
-- Barra de abajo con Inicio, Turnos, un botón central grande **Cargar** (turno, consulta, estudio, remedio o compra, gasto, tarea diaria), Diario y Compras. Los perfiles se abren tocando el nombre arriba en el inicio.
+- Barra de abajo con Inicio, Turnos, un botón central grande **Cargar** (turno, consulta, estudio, remedio o compra, gasto, tarea que se repite cada día, semana o mes), Diario y Compras. Los perfiles se abren tocando el nombre arriba en el inicio.
 
 ## Pantallas
 
@@ -34,7 +34,7 @@ Organizadas según los módulos del PRD.
 | `Historia.dc.html` | 3 · Historia clínica: filtros por diagnóstico, fecha, médico e institución |
 | `Consulta.dc.html` | 4 · Consulta realizada: médico, institución, resumen, indicaciones, recetas, compartir por WhatsApp |
 | `Medico.dc.html` | 5 · Ficha de contacto del médico |
-| `Cargar.dc.html` | 6 · Cargar (botón central): primero qué (turno, consulta, estudio, remedio o compra, gasto, tarea diaria), después cómo (hablar, foto o escribir) y revisión |
+| `Cargar.dc.html` | 6 · Cargar (botón central): primero qué (turno, consulta, estudio, remedio o compra, gasto, tarea que se repite cada día, semana o mes), después cómo (hablar, foto o escribir) y revisión |
 | `CargarTurno.dc.html` | 6b · Cargar un turno: se abre desde "+ Cargar un turno" en Turnos, directo en el paso de cómo cargarlo |
 | `Carpeta.dc.html` | 7 · Carpeta por diagnóstico con privacidad propia |
 

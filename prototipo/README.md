@@ -1,6 +1,6 @@
 # Prototipo de diseño · v1
 
-Prototipo clickeable de la app mobile (18 pantallas de 390×844).
+Prototipo clickeable de la app mobile (19 pantallas de 390×844).
 
 ## Cómo verlo
 
@@ -35,6 +35,7 @@ Organizadas según los módulos del PRD.
 | `Agenda.dc.html` | 2 · Turnos próximos: fecha, hora, institución, médico, estudios necesarios con su estado y responsable |
 | `Historia.dc.html` | 3 · Historia clínica: filtros por diagnóstico, fecha, médico e institución |
 | `Consulta.dc.html` | 4 · Consulta realizada: médico, institución, resumen, indicaciones, recetas, compartir por WhatsApp |
+| `Medicos.dc.html` | 5b · Médicos: listado de los médicos con botón para llamar y ver sus datos (pestaña dentro de Turnos) |
 | `Medico.dc.html` | 5 · Ficha de contacto del médico |
 | `Cargar.dc.html` | 6 · Cargar (botón central): primero qué (turno, consulta, estudio, remedio o compra, gasto, tarea que se repite cada día, semana o mes), después cómo (hablar, foto o escribir) y revisión |
 | `CargarTurno.dc.html` | 6b · Cargar un turno: se abre desde "+ Cargar un turno" en Turnos, directo en el paso de cómo cargarlo |

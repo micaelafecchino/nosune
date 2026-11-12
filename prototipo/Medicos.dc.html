@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Nosune · Médicos</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+main>*{flex-shrink:0}
+a{color:#0B5A4C;text-decoration:none}a:hover{color:#08453A}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F2F4F3; color: #121A17; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; overflow: hidden">
+
+  <header style="padding: 52px 20px 12px; display: flex; flex-direction: column; gap: 12px">
+    <div>
+      <span style="font-size: 17px; color: #3F4A47">Rosa · mamá</span>
+      <h1 style="margin: 0; font-size: 32px; font-weight: 700">Turnos</h1>
+    </div>
+    <nav aria-label="Turnos" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; background: #DCE3E0; padding: 4px; border-radius: 14px">
+      <a href="Agenda.dc.html" style="min-height: 48px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 700; color: #3F4A47">Próximos</a>
+      <a href="Historia.dc.html" style="min-height: 48px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 700; color: #3F4A47">Anteriores</a>
+      <a href="Medicos.dc.html" aria-current="page" style="min-height: 48px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 700; color: #121A17; background: #FFFFFF">Médicos</a>
+    </nav>
+  </header>
+
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 24px; display: flex; flex-direction: column; gap: 12px">
+    <sc-for list="{{docs}}" as="d" hint-placeholder-count="4">
+      <article style="background: #FFFFFF; border: 1.5px solid #CFD8D4; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 4px">
+        <sc-if value="{{d.main}}" hint-placeholder-val="{{false}}">
+          <span style="align-self: flex-start; font-size: 15px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: #E1EFEB; color: #08453A; margin-bottom: 4px">Médica de cabecera</span>
+        </sc-if>
+        <span style="font-size: 21px; font-weight: 700">{{d.name}}</span>
+        <span style="font-size: 18px">{{d.spec}}</span>
+        <span style="font-size: 17px; color: #3F4A47">{{d.place}}</span>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 10px">
+          <button aria-label="{{d.callLabel}}" style="min-height: 56px; border-radius: 14px; border: none; background: {{accent}}; color: #FFFFFF; font-size: 18px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Llamar</button>
+          <a href="Medico.dc.html" style="min-height: 56px; border-radius: 14px; border: 2px solid #CFD8D4; background: #FFFFFF; color: #121A17; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center">Ver datos</a>
+        </div>
+      </article>
+    </sc-for>
+    <button style="min-height: 56px; border-radius: 14px; border: 2px dashed #9AA6A2; background: transparent; color: #121A17; font-size: 18px; font-weight: 700; cursor: pointer">+ Agregar un médico</button>
+  </main>
+
+  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: end; background: #FFFFFF; border-top: 1.5px solid #CFD8D4; padding: 8px 4px 26px">
+    <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; justify-content: center; border-radius: 14px; color: #3F4A47; font-size: 15px; font-weight: 700">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a>
+    <a href="Agenda.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; justify-content: center; border-radius: 14px; color: {{accent}}; font-size: 15px; font-weight: 700; background: #E1EFEB">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Turnos</a>
+    <a href="Cargar.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; justify-content: flex-end; margin-top: -30px; color: #121A17; font-size: 16px; font-weight: 700">
+      <span style="width: 64px; height: 64px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; border: 4px solid #FFFFFF; box-shadow: 0 4px 14px rgba(11,90,76,0.35)">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>Cargar</a>
+    <a href="Diario.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; justify-content: center; border-radius: 14px; color: #3F4A47; font-size: 15px; font-weight: 700">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Diario</a>
+    <a href="Compras.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; justify-content: center; border-radius: 14px; color: #3F4A47; font-size: 15px; font-weight: 700">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Compras</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0B5A4C","options":["#0B5A4C","#234A87","#5B3289"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const docs = [
+      { name: 'Dra. Paula Ríos', spec: 'Clínica médica', place: 'Hospital [NOMBRE]', main: true },
+      { name: 'Dr. Martín Sosa', spec: 'Cardiología', place: 'Sanatorio [NOMBRE]', main: false },
+      { name: 'Dra. Sofía Paz', spec: 'Dermatología', place: 'Consultorio [DIRECCIÓN]', main: false },
+      { name: 'Dra. Lucía Benítez', spec: 'Oftalmología', place: 'Hospital [NOMBRE]', main: false },
+      { name: 'Dr. Herrera', spec: 'Traumatología', place: 'Sanatorio [NOMBRE]', main: false }
+    ].map((d) => ({ ...d, callLabel: 'Llamar a ' + d.name }));
+    return { accent: this.props.accent ?? '#0B5A4C', docs };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Prototipo de diseño · v1
 
-Prototipo clickeable de la app mobile (14 pantallas de 390×844).
+Prototipo clickeable de la app mobile (15 pantallas de 390×844).
 
 ## Cómo verlo
 
@@ -35,6 +35,7 @@ Organizadas según los módulos del PRD.
 | `Consulta.dc.html` | 4 · Consulta realizada: médico, institución, resumen, indicaciones, recetas, compartir por WhatsApp |
 | `Medico.dc.html` | 5 · Ficha de contacto del médico |
 | `Cargar.dc.html` | 6 · Cargar (botón central): primero qué (turno, consulta, estudio, remedio o compra, gasto, tarea diaria), después cómo (hablar, foto o escribir) y revisión |
+| `CargarTurno.dc.html` | 6b · Cargar un turno: se abre desde "+ Cargar un turno" en Turnos, directo en el paso de cómo cargarlo |
 | `Carpeta.dc.html` | 7 · Carpeta por diagnóstico con privacidad propia |
 
 **Módulo 2 · Compras recurrentes y Módulo 3 · Control diario**

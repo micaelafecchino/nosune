@@ -31,6 +31,19 @@ button{font-family:inherit}
   </header>
 
   <main style="flex: 1; overflow-y: auto; padding: 4px 20px 24px; display: flex; flex-direction: column; gap: 14px">
+    <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #7A3A06">Falta pedir</h2>
+    <article style="background: #FFF6EC; border: 2px solid #D9A06B; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 21px; font-weight: 700">Traumatología</span>
+      <span style="font-size: 17px; color: #3F4A47">Por el dolor de rodilla · nadie se encarga todavía</span>
+      <sc-if value="{{unclaimed}}" hint-placeholder-val="{{true}}">
+        <button onClick="{{claim}}" style="min-height: 56px; border-radius: 14px; border: none; background: #121A17; color: #FFFFFF; font-size: 18px; font-weight: 700; cursor: pointer">Me encargo yo</button>
+      </sc-if>
+      <sc-if value="{{claimed}}" hint-placeholder-val="{{false}}">
+        <p role="status" style="margin: 0; font-size: 18px">Te encargás vos. Le avisamos a la familia.</p>
+      </sc-if>
+    </article>
+
+    <h2 style="margin: 10px 0 0; font-size: 20px; font-weight: 700">Turnos pedidos</h2>
 
     <article style="background: #FFFFFF; border: 1.5px solid #CFD8D4; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 14px">
       <div style="display: flex; gap: 14px">
@@ -65,17 +78,6 @@ button{font-family:inherit}
       </div>
     </article>
 
-    <article style="background: #FFF6EC; border: 2px solid #D9A06B; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
-      <span style="font-size: 17px; font-weight: 700; color: #7A3A06">Falta pedir el turno</span>
-      <span style="font-size: 21px; font-weight: 700">Traumatología</span>
-      <span style="font-size: 17px; color: #3F4A47">Por el dolor de rodilla</span>
-      <sc-if value="{{unclaimed}}" hint-placeholder-val="{{true}}">
-        <button onClick="{{claim}}" style="min-height: 56px; border-radius: 14px; border: none; background: #121A17; color: #FFFFFF; font-size: 18px; font-weight: 700; cursor: pointer">Me encargo yo</button>
-      </sc-if>
-      <sc-if value="{{claimed}}" hint-placeholder-val="{{false}}">
-        <p role="status" style="margin: 0; font-size: 18px">Te encargás vos. Le avisamos a la familia.</p>
-      </sc-if>
-    </article>
 
     <article style="background: #FFFFFF; border: 1.5px solid #CFD8D4; border-radius: 20px; padding: 18px; display: flex; gap: 14px">
       <div style="width: 64px; height: 76px; border-radius: 14px; background: #E1EFEB; color: #08453A; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0">
@@ -88,7 +90,7 @@ button{font-family:inherit}
       </div>
     </article>
 
-    <a href="Cargar.dc.html" style="min-height: 56px; border-radius: 14px; border: 2px dashed #9AA6A2; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #121A17">+ Cargar un turno</a>
+    <a href="CargarTurno.dc.html" style="min-height: 56px; border-radius: 14px; border: 2px dashed #9AA6A2; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #121A17">+ Cargar un turno</a>
   </main>
 
   <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: end; background: #FFFFFF; border-top: 1.5px solid #CFD8D4; padding: 8px 4px 26px">

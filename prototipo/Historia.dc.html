@@ -13,8 +13,7 @@
 <style>
 body{margin:0}
 a{color:#16201D;text-decoration:none}a:hover{color:#0A4F43}
-button{font-family:inherit}
-input::placeholder{color:#5A6662}
+button,select{font-family:inherit}
 </style>
 </helmet>
 <div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F4F6F5; color: #16201D; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; overflow: hidden">
@@ -22,30 +21,51 @@ input::placeholder{color:#5A6662}
   <header style="padding: 52px 20px 8px; display: flex; flex-direction: column; gap: 12px">
     <div style="display: flex; flex-direction: column; gap: 2px">
       <span style="font-size: 13px; color: #5A6662">Rosa · mamá</span>
-      <h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">Historia clínica</h1>
+      <h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">Turnos</h1>
     </div>
-    <div role="group" aria-label="Carpetas" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px">
+    <nav aria-label="Turnos" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; background: #E7ECEA; padding: 4px; border-radius: 12px">
+      <a href="Agenda.dc.html" style="min-height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #4A5653">Próximos</a>
+      <a href="Historia.dc.html" aria-current="page" style="min-height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #16201D; background: #FFFFFF; box-shadow: 0 1px 2px rgba(22,32,29,0.12)">Historia clínica</a>
+    </nav>
+    <div role="group" aria-label="Diagnósticos" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px">
       <sc-for list="{{folders}}" as="fo" hint-placeholder-count="4">
         <button onClick="{{fo.pick}}" aria-pressed="{{fo.pressed}}" style="{{fo.card}}">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
           <span style="font-size: 13px; font-weight: 700; white-space: nowrap">{{fo.name}}</span>
           <span style="font-size: 11px; opacity: 0.85">{{fo.count}}</span>
         </button>
       </sc-for>
-      <button aria-label="Nueva carpeta" style="min-width: 76px; min-height: 76px; border-radius: 14px; border: 1.5px dashed #B9C4C0; background: transparent; color: #16201D; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Carpeta</button>
+      <button aria-label="Nuevo diagnóstico" style="min-width: 72px; min-height: 72px; border-radius: 14px; border: 1.5px dashed #B9C4C0; background: transparent; color: #16201D; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; flex-shrink: 0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Nuevo</button>
     </div>
-    <div style="display: flex; gap: 8px; align-items: center">
-      <label style="flex: 1; display: flex; align-items: center; gap: 8px; background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 12px; padding: 0 12px; min-height: 44px">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A6662" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Buscar en la historia</span>
-        <input type="search" placeholder="Buscar…" style="border: none; outline: none; background: transparent; font-family: inherit; font-size: 15px; color: #16201D; flex: 1; min-width: 0">
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+      <label style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 11px; font-weight: 600; color: #4A5653">Fecha</span>
+        <select onChange="{{setFecha}}" style="{{selStyle}}">
+          <option value="all" selected="{{fecha.all}}">Todas</option>
+          <option value="3m" selected="{{fecha.3m}}">Últimos 3 meses</option>
+          <option value="2026" selected="{{fecha.2026}}">2026</option>
+          <option value="2025" selected="{{fecha.2025}}">2025</option>
+        </select>
       </label>
-    </div>
-    <div style="display: flex; gap: 6px; overflow-x: auto">
-      <sc-for list="{{chips}}" as="c" hint-placeholder-count="4">
-        <button onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="{{c.style}}">{{c.label}}</button>
-      </sc-for>
+      <label style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 11px; font-weight: 600; color: #4A5653">Médico</span>
+        <select onChange="{{setMedico}}" style="{{selStyle}}">
+          <option value="all" selected="{{medico.all}}">Todos</option>
+          <option value="rios" selected="{{medico.rios}}">Dra. Ríos</option>
+          <option value="sosa" selected="{{medico.sosa}}">Dr. Sosa</option>
+          <option value="benitez" selected="{{medico.benitez}}">Dra. Benítez</option>
+        </select>
+      </label>
+      <label style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 11px; font-weight: 600; color: #4A5653">Institución</span>
+        <select onChange="{{setInst}}" style="{{selStyle}}">
+          <option value="all" selected="{{inst.all}}">Todas</option>
+          <option value="hospital" selected="{{inst.hospital}}">Hospital</option>
+          <option value="sanatorio" selected="{{inst.sanatorio}}">Sanatorio</option>
+          <option value="lab" selected="{{inst.lab}}">Laboratorio</option>
+        </select>
+      </label>
     </div>
   </header>
 
@@ -55,7 +75,7 @@ input::placeholder{color:#5A6662}
         <h2 style="margin: 8px 0 0; font-size: 13px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">{{it.month}}</h2>
       </sc-if>
       <a href="{{it.href}}" style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 16px; padding: 14px; display: flex; gap: 12px; align-items: center; min-height: 44px">
-        <span style="{{it.iconBox}}">
+        <span style="width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #EEF1F0; color: #2A3532">
           <sc-if value="{{it.isVisit}}" hint-placeholder-val="{{true}}">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="11" r="2"/></svg>
           </sc-if>
@@ -81,15 +101,20 @@ input::placeholder{color:#5A6662}
         <span style="font-size: 12px; font-weight: 600; color: #5A6662; white-space: nowrap">{{it.date}}</span>
       </a>
     </sc-for>
+    <sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+      <p style="margin: 0; padding: 16px; text-align: center; font-size: 14px; color: #5A6662; background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 16px">No hay registros con estos filtros.</p>
+    </sc-if>
   </main>
 
-  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #E2E7E5; padding: 8px 8px 28px">
+  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #E2E7E5; padding: 8px 4px 28px">
     <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a>
-    <a href="Agenda.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Agenda</a>
-    <a href="Historia.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: {{accent}}; font-size: 11px; font-weight: 700">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Historia</a>
+    <a href="Agenda.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: {{accent}}; font-size: 11px; font-weight: 700">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Turnos</a>
+    <a href="Diario.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Diario</a>
+    <a href="Compras.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Compras</a>
     <a href="Familia.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/></svg>Perfiles</a>
   </nav>
@@ -99,19 +124,21 @@ input::placeholder{color:#5A6662}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { filter: 'all', folder: 'all' };
+    this.state = { folder: 'all', fecha: 'all', medico: 'all', inst: 'all' };
   }
   renderVals() {
     const accent = this.props.accent ?? '#0E6B5B';
+    const s = this.state;
     const all = [
-      { type: 'study', folders: ['rodilla'], month: 'Octubre 2026', title: 'Radiografía de rodilla', sub: 'Pedida por Clínica médica', date: '22 oct', href: 'Historia.dc.html' },
-      { type: 'visit', folders: ['dia', 'rodilla'], month: 'Octubre 2026', title: 'Clínica médica', sub: 'Dra. Paula Ríos · derivó a traumatología', date: '20 oct', href: 'Consulta.dc.html' },
-      { type: 'study', folders: ['dia'], month: 'Octubre 2026', title: 'Ecografía abdominal', sub: 'Resultado pendiente de subir', date: '14 oct', href: 'Historia.dc.html' },
-      { type: 'study', folders: ['dia', 'hta'], month: 'Octubre 2026', title: 'Análisis de sangre', sub: 'Rutina + función renal', date: '3 oct', href: 'Historia.dc.html' },
-      { type: 'visit', folders: ['hta'], month: 'Septiembre 2026', title: 'Cardiología', sub: 'Dr. Martín Sosa · ajustó medicación', date: '28 sep', href: 'Historia.dc.html' },
-      { type: 'rx', folders: ['hta'], month: 'Septiembre 2026', title: 'Receta · Enalapril 10 mg', sub: '1 comprimido cada 12 h', date: '28 sep', href: 'Historia.dc.html' },
-      { type: 'study', folders: ['hta'], month: 'Septiembre 2026', title: 'Ecocardiograma', sub: 'Sanatorio [NOMBRE]', date: '12 sep', href: 'Historia.dc.html' },
-      { type: 'visit', folders: ['dia'], month: 'Julio 2026', title: 'Oftalmología', sub: 'Dra. Lucía Benítez · control anual', date: '3 jul', href: 'Historia.dc.html' }
+      { type: 'study', folders: ['rodilla'], ym: 202610, month: 'Octubre 2026', title: 'Radiografía de rodilla', sub: 'Sanatorio [NOMBRE] · pedida por la Dra. Ríos', date: '22 oct', medico: 'rios', inst: 'sanatorio', href: 'Historia.dc.html' },
+      { type: 'visit', folders: ['dia', 'rodilla'], ym: 202610, month: 'Octubre 2026', title: 'Clínica médica', sub: 'Dra. Paula Ríos · Hospital [NOMBRE]', date: '20 oct', medico: 'rios', inst: 'hospital', href: 'Consulta.dc.html' },
+      { type: 'study', folders: ['dia'], ym: 202610, month: 'Octubre 2026', title: 'Ecografía abdominal', sub: 'Hospital [NOMBRE] · resultado pendiente', date: '14 oct', medico: 'rios', inst: 'hospital', href: 'Historia.dc.html' },
+      { type: 'study', folders: ['dia', 'hta'], ym: 202610, month: 'Octubre 2026', title: 'Análisis de sangre', sub: 'Laboratorio [NOMBRE] · rutina + función renal', date: '3 oct', medico: 'sosa', inst: 'lab', href: 'Historia.dc.html' },
+      { type: 'visit', folders: ['hta'], ym: 202609, month: 'Septiembre 2026', title: 'Cardiología', sub: 'Dr. Martín Sosa · Sanatorio [NOMBRE]', date: '28 sep', medico: 'sosa', inst: 'sanatorio', href: 'Historia.dc.html' },
+      { type: 'rx', folders: ['hta'], ym: 202609, month: 'Septiembre 2026', title: 'Receta · Enalapril 10 mg', sub: 'Dr. Martín Sosa · cada 12 h', date: '28 sep', medico: 'sosa', inst: 'sanatorio', href: 'Historia.dc.html' },
+      { type: 'study', folders: ['hta'], ym: 202609, month: 'Septiembre 2026', title: 'Ecocardiograma', sub: 'Sanatorio [NOMBRE]', date: '12 sep', medico: 'sosa', inst: 'sanatorio', href: 'Historia.dc.html' },
+      { type: 'visit', folders: ['dia'], ym: 202607, month: 'Julio 2026', title: 'Oftalmología', sub: 'Dra. Lucía Benítez · control anual', date: '3 jul', medico: 'benitez', inst: 'hospital', href: 'Historia.dc.html' },
+      { type: 'visit', folders: ['dia'], ym: 202512, month: 'Diciembre 2025', title: 'Clínica médica · control anual', sub: 'Dra. Paula Ríos · Hospital [NOMBRE]', date: '2 dic', medico: 'rios', inst: 'hospital', href: 'Historia.dc.html' }
     ];
     const folderDefs = [
       { id: 'all', name: 'Todo', color: '#16201D', soft: '#FFFFFF' },
@@ -121,8 +148,7 @@ class Component extends DCLogic {
     ];
     const fmap = {};
     folderDefs.forEach((f) => { fmap[f.id] = f; });
-    const fo = this.state.folder;
-    const t = this.state.filter;
+    const fo = s.folder;
     const folders = folderDefs.map((f) => {
       const on = fo === f.id;
       const n = f.id === 'all' ? all.length : all.filter((x) => x.folders.includes(f.id)).length;
@@ -130,11 +156,11 @@ class Component extends DCLogic {
         name: f.name, count: n + (n === 1 ? ' registro' : ' registros'),
         pressed: on ? 'true' : 'false',
         pick: () => this.setState({ folder: f.id }),
-        card: 'min-width: 104px; min-height: 76px; padding: 10px 12px; border-radius: 14px; cursor: pointer; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 4px; text-align: left; flex-shrink: 0; ' + (on ? 'background: ' + f.color + '; color: #FFFFFF; border: 1px solid ' + f.color + ';' : 'background: #FFFFFF; color: ' + (f.id === 'all' ? '#16201D' : f.color) + '; border: 1px solid #E2E7E5;')
+        card: 'min-width: 100px; min-height: 72px; padding: 10px 12px; border-radius: 14px; cursor: pointer; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 2px; text-align: left; flex-shrink: 0; ' + (on ? 'background: ' + f.color + '; color: #FFFFFF; border: 1px solid ' + f.color + ';' : 'background: #FFFFFF; color: ' + (f.id === 'all' ? '#16201D' : f.color) + '; border: 1px solid #E2E7E5;')
       };
     });
-    const list = all.filter((x) => (fo === 'all' || x.folders.includes(fo)) && (t === 'all' || x.type === t));
-    const tint = { visit: ['#EEF1F0', '#2A3532'], study: ['#EEF1F0', '#2A3532'], rx: ['#EEF1F0', '#2A3532'] };
+    const fechaOk = (x) => s.fecha === 'all' || (s.fecha === '3m' && x.ym >= 202609) || (s.fecha === '2026' && x.ym >= 202601) || (s.fecha === '2025' && x.ym < 202601);
+    const list = all.filter((x) => (fo === 'all' || x.folders.includes(fo)) && fechaOk(x) && (s.medico === 'all' || x.medico === s.medico) && (s.inst === 'all' || x.inst === s.inst));
     const items = list.map((x, i) => {
       const others = x.folders.filter((id) => id !== fo);
       return {
@@ -146,20 +172,19 @@ class Component extends DCLogic {
         tags: others.map((id) => ({
           name: fmap[id].name,
           style: 'font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: ' + fmap[id].soft + '; color: ' + (id === 'dia' ? '#0A4F43' : fmap[id].color) + ';'
-        })),
-        iconBox: 'width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: ' + tint[x.type][0] + '; color: ' + tint[x.type][1] + ';'
+        }))
       };
     });
-    const defs = [['all', 'Todo'], ['visit', 'Consultas'], ['study', 'Estudios'], ['rx', 'Recetas']];
-    const chips = defs.map(([id, label]) => {
-      const on = t === id;
-      return {
-        label, pressed: on ? 'true' : 'false',
-        pick: () => this.setState({ filter: id }),
-        style: 'min-height: 34px; padding: 0 12px; border-radius: 999px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; ' + (on ? 'background: #DDE3E1; color: #16201D; border: 1px solid #C9D3CF;' : 'background: transparent; color: #4A5653; border: 1px solid transparent;')
-      };
-    });
-    return { accent, items, chips, folders };
+    const sel = (key, ids) => { const o = {}; ids.forEach((id) => { o[id] = s[key] === id; }); return o; };
+    const pick = (key) => (e) => this.setState({ [key]: e.target.value });
+    return {
+      accent, items, folders, empty: items.length === 0,
+      fecha: sel('fecha', ['all', '3m', '2026', '2025']),
+      medico: sel('medico', ['all', 'rios', 'sosa', 'benitez']),
+      inst: sel('inst', ['all', 'hospital', 'sanatorio', 'lab']),
+      setFecha: pick('fecha'), setMedico: pick('medico'), setInst: pick('inst'),
+      selStyle: 'width: 100%; min-height: 40px; border-radius: 10px; border: 1px solid #C9D3CF; background: #FFFFFF; padding: 0 6px; font-size: 13px; font-weight: 600; color: #16201D'
+    };
   }
 }
 </script>

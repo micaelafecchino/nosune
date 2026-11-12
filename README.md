@@ -8,6 +8,14 @@ Etapa de prototipo de diseño. Ver [`prototipo/`](prototipo/).
 
 **Versión web del prototipo:** https://micaelafecchino.github.io/nosune/ (requiere GitHub Pages activado).
 
+## Módulos (según el PRD)
+
+1. **Historia clínica y turnos:** turnos próximos y realizados, filtros, fichas de médicos, carga rápida (audio, captura, texto) y compartir.
+2. **Compras recurrentes:** medicamentos e ítems de cuidado con recordatorio, receta y quién se ocupó.
+3. **Control diario:** medicamentos y ejercicios del día con estado y responsable.
+
+Y de forma transversal: perfiles propios y de terceros, colaboradores con permisos (incluso restringidos), responsables por tarea, un asistente para consultar la información del paciente y fuentes conectadas (WhatsApp, email).
+
 ## Ideas centrales
 
 - **Perfiles:** cada persona es dueña de su perfil y puede invitar colaboradores. También se pueden crear perfiles sin cuenta (un bebé, un abuelo) que administra otra persona y que más adelante se pueden transferir.

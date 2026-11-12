@@ -21,12 +21,17 @@ button{font-family:inherit}
   <header style="padding: 52px 20px 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
     <div style="display: flex; flex-direction: column; gap: 2px">
       <span style="font-size: 13px; color: #5A6662">Rosa · mamá</span>
-      <h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">Agenda</h1>
+      <h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">Turnos</h1>
     </div>
-    <button aria-label="Nuevo turno" style="height: 44px; padding: 0 16px; border-radius: 999px; border: none; background: {{accent}}; color: #FFFFFF; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px; cursor: pointer">
+    <a href="Cargar.dc.html" aria-label="Cargar turno" style="height: 44px; padding: 0 16px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Turno
-    </button>
+    </a>
   </header>
+
+  <nav aria-label="Turnos" style="margin: 0 20px 8px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; background: #E7ECEA; padding: 4px; border-radius: 12px">
+    <a href="Agenda.dc.html" aria-current="page" style="min-height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #16201D; background: #FFFFFF; box-shadow: 0 1px 2px rgba(22,32,29,0.12)">Próximos</a>
+    <a href="Historia.dc.html" style="min-height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #4A5653">Historia clínica</a>
+  </nav>
 
   <div style="padding: 4px 20px 12px; display: flex; flex-direction: column; gap: 10px">
     <span style="font-size: 14px; font-weight: 600">Noviembre 2026</span>
@@ -57,8 +62,14 @@ button{font-family:inherit}
         </div>
         <span style="font-size: 11px; font-weight: 700; color: {{accent}}; background: #E3F1EE; padding: 4px 8px; border-radius: 999px">Confirmado</span>
       </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; background: #F4F6F5; border-radius: 12px; padding: 10px 12px">
+        <span style="font-size: 12px; font-weight: 700; color: #4A5653">Estudios necesarios</span>
+        <span style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-size: 14px">Ecocardiograma</span><span style="font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: #E3F1EE; color: #0A4F43">Listo</span></span>
+        <span style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-size: 14px">Análisis de sangre</span><span style="font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: #FBEEDF; color: #7A3A06">Turno vie 7</span></span>
+        <span style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-size: 14px">Lista de medicación actual</span><span style="font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: #E3F1EE; color: #0A4F43">Listo</span></span>
+      </div>
       <div style="display: flex; gap: 8px; flex-wrap: wrap">
-        <button style="min-height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid #E2E7E5; background: #FFFFFF; font-size: 13px; font-weight: 600; color: #16201D; cursor: pointer">Cómo llegar</button>
+        <button style="min-height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid #E2E7E5; background: #FFFFFF; font-size: 13px; font-weight: 600; color: #16201D; cursor: pointer">Agregar a mi calendario</button>
         <button style="min-height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid #E2E7E5; background: #FFFFFF; font-size: 13px; font-weight: 600; color: #16201D; cursor: pointer">Preguntas para el médico (3)</button>
       </div>
       <span style="display: flex; align-items: center; gap: 8px"><span style="width: 24px; height: 24px; border-radius: 999px; background: #E8EEF8; color: #2F5DA8; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center">J</span><span style="font-size: 13px; font-weight: 600; color: #2A3532">Juan la acompaña</span><span style="font-size: 12px; color: #5A6662">· recordatorio el día anterior</span></span>
@@ -115,13 +126,15 @@ button{font-family:inherit}
     </article>
   </main>
 
-  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #E2E7E5; padding: 8px 8px 28px">
+  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #E2E7E5; padding: 8px 4px 28px">
     <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a>
     <a href="Agenda.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: {{accent}}; font-size: 11px; font-weight: 700">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Agenda</a>
-    <a href="Historia.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Historia</a>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Turnos</a>
+    <a href="Diario.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Diario</a>
+    <a href="Compras.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Compras</a>
     <a href="Familia.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/></svg>Perfiles</a>
   </nav>

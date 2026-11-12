@@ -73,6 +73,24 @@ button{font-family:inherit}
       </section>
     </sc-if>
 
+    <section aria-labelledby="fuentes" style="display: flex; flex-direction: column; gap: 10px">
+      <h2 id="fuentes" style="margin: 0; font-size: 13px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">Fuentes conectadas</h2>
+      <div style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 18px; display: flex; flex-direction: column">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1F0">
+          <span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">WhatsApp</span><span style="font-size: 12px; color: #5A6662">Grupo “Salud mamá”: carga mensajes y manda resúmenes</span></span>
+          <span style="font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: #E3F1EE; color: #0A4F43">Conectado</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1F0">
+          <span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Email</span><span style="font-size: 12px; color: #5A6662">Resultados de estudios y laboratorios</span></span>
+          <button style="min-height: 36px; padding: 0 12px; border-radius: 10px; border: 1px solid #C9D3CF; background: #FFFFFF; color: #16201D; font-size: 13px; font-weight: 600; cursor: pointer">Conectar</button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px">
+          <span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Calendario</span><span style="font-size: 12px; color: #5A6662">Turnos y recordatorios en tu agenda</span></span>
+          <button style="min-height: 36px; padding: 0 12px; border-radius: 10px; border: 1px solid #C9D3CF; background: #FFFFFF; color: #16201D; font-size: 13px; font-weight: 600; cursor: pointer">Conectar</button>
+        </div>
+      </div>
+    </section>
+
     <section aria-labelledby="ficha" style="background: #16201D; color: #FFFFFF; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
       <h2 id="ficha" style="margin: 0; font-size: 15px; font-weight: 700">Ficha de emergencia · {{sel.name}}</h2>
       <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px">
@@ -103,13 +121,15 @@ button{font-family:inherit}
     </sc-if>
   </main>
 
-  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #E2E7E5; padding: 8px 8px 28px">
+  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #E2E7E5; padding: 8px 4px 28px">
     <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a>
     <a href="Agenda.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Agenda</a>
-    <a href="Historia.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Historia</a>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Turnos</a>
+    <a href="Diario.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Diario</a>
+    <a href="Compras.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Compras</a>
     <a href="Familia.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: {{accent}}; font-size: 11px; font-weight: 700">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/></svg>Perfiles</a>
   </nav>
@@ -139,7 +159,7 @@ class Component extends DCLogic {
         allergy: 'Penicilina', hasFolders: false, canInvite: true,
         collabs: [
           { initial: 'J', name: 'Juan · hermano', role: 'Ve y edita todo', bg: '#E8EEF8', fg: '#2F5DA8' },
-          { initial: 'L', name: 'Laura · cuidadora', role: 'Solo agenda y medicación', bg: '#FBEEDF', fg: '#A4500B' }
+          { initial: 'L', name: 'Laura · cuidadora', role: 'Restringido: carga control diario y compras, no ve la historia clínica', bg: '#FBEEDF', fg: '#A4500B' }
         ] },
       { id: 'lola', name: 'Lola', rel: 'hija · 2 meses', initial: 'L', bg: '#EFE8F7', fg: '#6B3FA0', kind: 'managed', badge: 'Sin cuenta', desc: 'Lo administrás vos',
         ownership: 'Perfil de una recién nacida: lo administrás vos y lo compartís con quien la cuida.',

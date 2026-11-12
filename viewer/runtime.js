@@ -89,7 +89,7 @@
         }
         continue;
       }
-      if (m && (name === 'checked' || name === 'disabled')) {
+      if (m && (name === 'checked' || name === 'disabled' || name === 'selected')) {
         const v = !!resolve(m[1], scope);
         el[name] = v;
         if (v) el.setAttribute(name, '');

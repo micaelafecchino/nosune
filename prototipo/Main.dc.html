@@ -16,13 +16,13 @@ a{color:#0E6B5B;text-decoration:none}a:hover{color:#0A4F43}
 button{font-family:inherit}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F4F6F5; color: #16201D; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; overflow: hidden">
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F4F6F5; color: #16201D; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; overflow: hidden; position: relative">
 
   <header style="padding: 52px 20px 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
     <a href="Familia.dc.html" style="display: flex; align-items: center; gap: 10px; padding: 6px 12px 6px 6px; background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 999px; color: #16201D; min-height: 44px; box-sizing: border-box">
       <span style="width: 32px; height: 32px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px">R</span>
       <span style="display: flex; flex-direction: column; line-height: 1.15">
-        <span style="font-size: 11px; color: #5A6662">Seguimiento de</span>
+        <span style="font-size: 11px; color: #5A6662">Cuidando a</span>
         <span style="font-size: 14px; font-weight: 600">Rosa · mamá</span>
       </span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5A6662" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
@@ -33,10 +33,24 @@ button{font-family:inherit}
     </button>
   </header>
 
-  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 20px; display: flex; flex-direction: column; gap: 20px">
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 96px; display: flex; flex-direction: column; gap: 16px">
     <h1 style="margin: 0; font-size: 26px; line-height: 1.2; font-weight: 700; letter-spacing: -0.01em">Domingo 1 de noviembre</h1>
 
-    <section aria-labelledby="prox" style="background: #FFFFFF; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 14px; border: 1px solid #E2E7E5">
+    <a href="Diario.dc.html" style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 10px; color: #16201D">
+      <span style="display: flex; justify-content: space-between; align-items: center">
+        <span style="font-size: 13px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">Control diario</span>
+        <span style="font-size: 13px; font-weight: 700">2 de 6 hechas</span>
+      </span>
+      <span role="img" aria-label="2 de 6 tareas hechas" style="height: 8px; border-radius: 999px; background: #DDE3E1; overflow: hidden; display: block">
+        <span style="display: block; height: 100%; width: 33%; border-radius: 999px; background: {{accent}}"></span>
+      </span>
+      <span style="display: flex; align-items: center; gap: 8px">
+        <span style="font-size: 14px; color: #2A3532">Próxima: <b>Ejercicios de rodilla</b> · 17:00</span>
+        <span style="margin-left: auto; width: 22px; height: 22px; border-radius: 999px; background: #E3F1EE; color: {{accent}}; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center">V</span>
+      </span>
+    </a>
+
+    <section aria-labelledby="prox" style="background: #FFFFFF; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px; border: 1px solid #E2E7E5">
       <div style="display: flex; justify-content: space-between; align-items: center">
         <h2 id="prox" style="margin: 0; font-size: 13px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">Próximo turno</h2>
         <span style="font-size: 12px; font-weight: 600; color: {{accent}}; background: #E3F1EE; padding: 4px 10px; border-radius: 999px">en 5 días</span>
@@ -47,18 +61,17 @@ button{font-family:inherit}
           <span style="font-size: 22px; font-weight: 700; color: {{accent}}; line-height: 1">6</span>
         </div>
         <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
-          <span style="font-size: 17px; font-weight: 700">Cardiología</span>
-          <span style="font-size: 14px; color: #5A6662">Dr. Martín Sosa · 10:30 h</span>
-          <span style="font-size: 14px; color: #5A6662">Sanatorio [NOMBRE] · Consultorio 4</span>
+          <span style="font-size: 17px; font-weight: 700">Cardiología · 10:30</span>
+          <span style="font-size: 14px; color: #5A6662">Dr. Martín Sosa · Sanatorio [NOMBRE]</span>
           <span style="display: flex; align-items: center; gap: 6px; margin-top: 4px"><span style="width: 22px; height: 22px; border-radius: 999px; background: #E8EEF8; color: #2F5DA8; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center">J</span><span style="font-size: 13px; font-weight: 600; color: #2A3532">Juan la acompaña</span></span>
         </div>
       </div>
-      <div style="background: #FBEEDF; border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
-        <span style="font-size: 13px; font-weight: 700; color: #7A3A06">Para llevar</span>
-        <span style="font-size: 14px; color: #3B2A1C">· Ecocardiograma de septiembre</span>
-        <span style="font-size: 14px; color: #3B2A1C">· Lista de medicación actual</span>
+      <div style="display: flex; flex-direction: column; gap: 6px; background: #F4F6F5; border-radius: 12px; padding: 10px 12px">
+        <span style="font-size: 12px; font-weight: 700; color: #4A5653">Estudios necesarios</span>
+        <span style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-size: 14px">Ecocardiograma</span><span style="font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: #E3F1EE; color: #0A4F43">Listo</span></span>
+        <span style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-size: 14px">Análisis de sangre</span><span style="font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: #FBEEDF; color: #7A3A06">Turno vie 7</span></span>
       </div>
-      <a href="Agenda.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 44px; border-radius: 12px; background: {{accent}}; color: #FFFFFF; font-weight: 600; font-size: 15px">Ver agenda completa</a>
+      <a href="Agenda.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 44px; border-radius: 12px; background: {{accent}}; color: #FFFFFF; font-weight: 600; font-size: 15px">Ver todos los turnos</a>
     </section>
 
     <section aria-labelledby="pend" style="display: flex; flex-direction: column; gap: 10px">
@@ -71,7 +84,7 @@ button{font-family:inherit}
           <button onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="{{f.style}}">{{f.label}}</button>
         </sc-for>
       </div>
-      <sc-for list="{{tasks}}" as="t" hint-placeholder-count="4">
+      <sc-for list="{{tasks}}" as="t" hint-placeholder-count="3">
         <div style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 16px; padding: 12px 14px; display: flex; gap: 12px; align-items: flex-start">
           <button aria-label="Marcar como hecho" onClick="{{t.toggle}}" style="{{t.boxStyle}}">
             <sc-if value="{{t.done}}" hint-placeholder-val="{{false}}">
@@ -101,24 +114,34 @@ button{font-family:inherit}
       </sc-if>
     </section>
 
-    <section aria-labelledby="med" style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 16px; padding: 14px; display: flex; align-items: center; gap: 12px">
-      <span style="width: 40px; height: 40px; border-radius: 12px; background: #E3F1EE; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 20.5 3.5 13.5a5 5 0 0 1 7-7l7 7a5 5 0 0 1-7 7Z"/><path d="m8.5 8.5 7 7"/></svg>
+    <a href="Compras.dc.html" style="background: #FFFFFF; border: 2px solid #E8B98F; border-radius: 18px; padding: 14px; display: flex; align-items: center; gap: 12px; color: #16201D">
+      <span style="width: 42px; height: 42px; border-radius: 12px; background: #FBEEDF; color: #A4500B; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
       </span>
-      <div style="display: flex; flex-direction: column; gap: 2px; flex: 1">
-        <h2 id="med" style="margin: 0; font-size: 15px; font-weight: 700">Medicación de hoy</h2>
-        <span style="font-size: 13px; color: #5A6662">Enalapril 10 mg · 8:00 tomada · 20:00 pendiente</span>
-      </div>
-    </section>
+      <span style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 12px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">Para reponer</span>
+        <span style="font-size: 15px; font-weight: 700">Enalapril 10 mg · quedan 4 días</span>
+        <span style="font-size: 12px; color: #4A5653">Laura se encarga · receta vigente</span>
+      </span>
+    </a>
   </main>
 
-  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #E2E7E5; padding: 8px 8px 28px">
+  <div style="position: absolute; right: 16px; bottom: 100px; display: flex; gap: 10px; align-items: center">
+    <a href="Chat.dc.html" style="min-height: 52px; padding: 0 18px; border-radius: 999px; background: #16201D; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px; box-shadow: 0 6px 16px rgba(22,32,29,0.25)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Preguntar</a>
+    <a href="Cargar.dc.html" aria-label="Carga rápida" style="width: 56px; height: 56px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(14,107,91,0.35)">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></a>
+  </div>
+
+  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #E2E7E5; padding: 8px 4px 28px">
     <a href="Main.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: {{accent}}; font-size: 11px; font-weight: 700">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a>
     <a href="Agenda.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Agenda</a>
-    <a href="Historia.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Historia</a>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Turnos</a>
+    <a href="Diario.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Diario</a>
+    <a href="Compras.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Compras</a>
     <a href="Familia.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/></svg>Perfiles</a>
   </nav>
@@ -135,7 +158,7 @@ class Component extends DCLogic {
     const base = [
       { id: 1, title: 'Pedir turno con traumatología', origin: 'Derivación · Clínica médica, 20 oct', urgent: true, when: 'Esta semana', owner: null },
       { id: 2, title: 'Análisis de sangre en ayunas', origin: 'Orden · Clínica médica, 20 oct', urgent: true, when: 'Antes del 15/11', owner: 'juan' },
-      { id: 3, title: 'Comprar Enalapril 10 mg (quedan 4 días)', origin: 'Receta · Cardiología, 28 sep', urgent: false, when: '', owner: 'laura' },
+      { id: 3, title: 'Mandarle el ecocardiograma al Dr. Sosa', origin: 'Para el turno de Cardiología, 6 nov', urgent: false, when: '', owner: 'juan' },
       { id: 4, title: 'Subir resultado de la ecografía', origin: 'Estudio · 14 oct', urgent: false, when: '', owner: 'yo' }
     ];
     const who = {

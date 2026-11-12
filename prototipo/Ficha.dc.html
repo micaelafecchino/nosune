@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Nosune · Ficha de emergencia</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+main>*{flex-shrink:0}
+a{color:#0B5A4C;text-decoration:none}a:hover{color:#08453A}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F2F4F3; color: #121A17; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; overflow: hidden">
+
+  <header style="padding: 48px 12px 4px">
+    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #121A17; font-size: 18px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Volver</a>
+  </header>
+
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 28px; display: flex; flex-direction: column; gap: 14px">
+    <div>
+      <span style="font-size: 18px; font-weight: 700; color: #8A1C12">Ficha de emergencia</span>
+      <h1 style="margin: 0; font-size: 32px; font-weight: 700">Rosa [APELLIDO]</h1>
+      <span style="font-size: 19px">78 años · DNI [NÚMERO]</span>
+    </div>
+
+    <section aria-labelledby="alergia" style="background: #FDECEA; border: 2px solid #E0A39C; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 4px">
+      <h2 id="alergia" style="margin: 0; font-size: 18px; font-weight: 700; color: #8A1C12">Alérgica a</h2>
+      <span style="font-size: 26px; font-weight: 700">Penicilina</span>
+    </section>
+
+    <section aria-labelledby="salud" style="background: #FFFFFF; border: 1.5px solid #CFD8D4; border-radius: 20px; display: flex; flex-direction: column">
+      <h2 id="salud" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Datos de salud</h2>
+      <div style="padding: 14px 18px; border-bottom: 1.5px solid #E3E8E6; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; color: #3F4A47">Enfermedades</span><span style="font-size: 20px; font-weight: 700">Hipertensión</span></div>
+      <div style="padding: 14px 18px; border-bottom: 1.5px solid #E3E8E6; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; color: #3F4A47">Remedios que toma</span><span style="font-size: 20px; font-weight: 700">Enalapril 10 mg</span><span style="font-size: 18px">a las 8 y a las 20</span><span style="font-size: 20px; font-weight: 700; margin-top: 6px">Calcio + vitamina D</span><span style="font-size: 18px">a la noche</span></div>
+      <div style="padding: 14px 18px; border-bottom: 1.5px solid #E3E8E6; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; color: #3F4A47">Grupo sanguíneo</span><span style="font-size: 20px; font-weight: 700">[GRUPO]</span></div>
+      <div style="padding: 14px 18px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; color: #3F4A47">Obra social</span><span style="font-size: 20px; font-weight: 700">[OBRA SOCIAL]</span><span style="font-size: 18px">N.º de afiliado [NÚMERO]</span></div>
+    </section>
+
+    <section aria-labelledby="llamar" style="display: flex; flex-direction: column; gap: 10px">
+      <h2 id="llamar" style="margin: 0; font-size: 21px; font-weight: 700">A quién llamar</h2>
+      <button style="min-height: 72px; border-radius: 18px; border: none; background: {{accent}}; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 0 18px; text-align: left">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+        <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 20px; font-weight: 700">Juan, hijo</span><span style="font-size: 17px">Vive cerca · [TELÉFONO]</span></span>
+      </button>
+      <button style="min-height: 72px; border-radius: 18px; border: 2px solid #CFD8D4; background: #FFFFFF; color: #121A17; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 0 18px; text-align: left">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+        <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 20px; font-weight: 700">Dra. Paula Ríos</span><span style="font-size: 17px; color: #3F4A47">Su médica de cabecera</span></span>
+      </button>
+    </section>
+
+    <button style="min-height: 58px; border-radius: 16px; border: 2px solid #121A17; background: #FFFFFF; color: #121A17; font-size: 18px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Mandar la ficha</button>
+    <span style="font-size: 16px; color: #3F4A47; text-align: center">Se puede abrir sin desbloquear el celular.</span>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0B5A4C","options":["#0B5A4C","#234A87","#5B3289"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#0B5A4C' };
+  }
+}
+</script>
+</body>
+</html>

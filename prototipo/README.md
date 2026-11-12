@@ -1,6 +1,6 @@
 # Prototipo de diseño · v1
 
-Prototipo clickeable de la app mobile (13 pantallas de 390×844).
+Prototipo clickeable de la app mobile (14 pantallas de 390×844).
 
 ## Cómo verlo
 
@@ -41,7 +41,7 @@ Organizadas según los módulos del PRD.
 
 | Archivo | Pantalla |
 |---|---|
-| `Diario.dc.html` | 8 · Control diario: medicamentos y ejercicios del día, estado pendiente/hecho y responsable |
+| `Diario.dc.html` | 8 · Control diario: medicamentos y ejercicios del día, estado pendiente/hecho, responsable y quién la marcó como hecha (y a qué hora) |
 | `Compras.dc.html` | 9 · Compras recurrentes: recordatorio, receta, marcar como comprado, quién se ocupó, cuánto y dónde (opcional) |
 
 **Cross app**
@@ -52,6 +52,7 @@ Organizadas según los módulos del PRD.
 | `Familia.dc.html` | 11 · Perfiles, colaboradores, permisos restringidos y fuentes conectadas (WhatsApp, email, calendario) |
 | `Asignar.dc.html` | 12 · Asignar responsable de una tarea |
 | `NuevoPerfil.dc.html` | 13 · Crear un perfil (sin cuenta o con invitación) |
+| `Ficha.dc.html` | 14 · Ficha de emergencia con datos clave (alergias, enfermedades, remedios, obra social, a quién llamar); se abre desde el inicio |
 | `canvas.json` | Ubicación de las pantallas en el canvas |
 
 Los datos son de ejemplo. Lo que aparece entre corchetes, como `[OBRA SOCIAL]`, son lugares para completar.

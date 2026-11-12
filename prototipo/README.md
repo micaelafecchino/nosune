@@ -1,6 +1,6 @@
 # Prototipo de diseño · v1
 
-Prototipo clickeable de la app mobile (15 pantallas de 390×844).
+Prototipo clickeable de la app mobile (18 pantallas de 390×844).
 
 ## Cómo verlo
 
@@ -19,6 +19,8 @@ La app la van a usar sobre todo personas grandes, así que:
 - Alto contraste y botones de al menos 56 px de alto.
 - Una sola idea por tarjeta, pocas cosas por pantalla y palabras simples ("Va con Juan", "Le toca a Laura").
 - Sin scroll horizontal ni menús desplegables.
+- "Solo lo mío" en Inicio, Turnos, Diario y Compras para ver rápido lo que te toca.
+- "Cómo le fue en el médico" siempre queda asociado a un turno: desde el turno ya va asociado; desde + Cargar se elige el turno antes de guardar.
 - Barra de abajo con Inicio, Turnos, un botón central grande **Cargar** (turno, consulta, estudio, remedio o compra, gasto, tarea que se repite cada día, semana o mes), Diario y Compras. Los perfiles se abren tocando el nombre arriba en el inicio.
 
 ## Pantallas
@@ -36,6 +38,9 @@ Organizadas según los módulos del PRD.
 | `Medico.dc.html` | 5 · Ficha de contacto del médico |
 | `Cargar.dc.html` | 6 · Cargar (botón central): primero qué (turno, consulta, estudio, remedio o compra, gasto, tarea que se repite cada día, semana o mes), después cómo (hablar, foto o escribir) y revisión |
 | `CargarTurno.dc.html` | 6b · Cargar un turno: se abre desde "+ Cargar un turno" en Turnos, directo en el paso de cómo cargarlo |
+| `CargarTarea.dc.html` | 6c · Cargar una tarea que se repite: se abre desde Diario |
+| `CargarCompra.dc.html` | 6d · Cargar una compra: se abre desde Compras |
+| `CargarConsulta.dc.html` | 6e · Contar cómo le fue: se abre desde un turno que ya pasó, con el turno ya asociado |
 | `Carpeta.dc.html` | 7 · Carpeta por diagnóstico con privacidad propia |
 
 **Módulo 2 · Compras recurrentes y Módulo 3 · Control diario**

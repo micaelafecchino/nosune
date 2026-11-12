@@ -20,9 +20,13 @@ button{font-family:inherit}
 <div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F2F4F3; color: #121A17; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; overflow: hidden">
 
   <header style="padding: 52px 20px 12px; display: flex; flex-direction: column; gap: 12px">
-    <div>
-      <span style="font-size: 17px; color: #3F4A47">Rosa · mamá</span>
-      <h1 style="margin: 0; font-size: 32px; font-weight: 700">Tareas</h1>
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px">
+      <div>
+        <span style="font-size: 17px; color: #3F4A47">Rosa · mamá</span>
+        <h1 style="margin: 0; font-size: 32px; font-weight: 700">Tareas</h1>
+      </div>
+      <button onClick="{{toggleMine}}" aria-pressed="{{minePressed}}" style="{{mineStyle}}">
+        <span style="{{mineBox}}"><sc-if value="{{mine}}" hint-placeholder-val="{{false}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></sc-if></span>Solo lo mío</button>
     </div>
     <div style="display: flex; align-items: center; gap: 8px">
       <button onClick="{{prevDay}}" disabled="{{isFirst}}" aria-label="Día anterior" style="{{prevStyle}}">
@@ -35,11 +39,6 @@ button{font-family:inherit}
       <button onClick="{{nextDay}}" disabled="{{isLast}}" aria-label="Día siguiente" style="{{nextStyle}}">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
       </button>
-    </div>
-    <div role="group" aria-label="Qué tareas ver" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; background: #DCE3E0; padding: 4px; border-radius: 14px">
-      <sc-for list="{{filters}}" as="f" hint-placeholder-count="2">
-        <button onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="{{f.style}}">{{f.label}}</button>
-      </sc-for>
     </div>
   </header>
 
@@ -67,6 +66,7 @@ button{font-family:inherit}
     <sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
       <p style="margin: 0; padding: 18px; text-align: center; font-size: 18px; color: #3F4A47; background: #FFFFFF; border-radius: 18px">No tenés tareas este día.</p>
     </sc-if>
+    <a href="CargarTarea.dc.html" style="min-height: 56px; border-radius: 14px; border: 2px dashed #9AA6A2; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #121A17">+ Agregar una tarea que se repite</a>
   </main>
 
   <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: end; background: #FFFFFF; border-top: 1.5px solid #CFD8D4; padding: 8px 4px 26px">
@@ -152,7 +152,12 @@ class Component extends DCLogic {
     const arrow = (off) => 'width: 56px; height: 56px; flex-shrink: 0; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 0; ' + (off ? 'background: transparent; border: 2px solid #DCE3E0; color: #9AA6A2; cursor: not-allowed;' : 'background: #FFFFFF; border: 2px solid #CFD8D4; color: #121A17; cursor: pointer;');
     const rel = s.day === 0 ? 'Hoy' : s.day === 1 ? 'Mañana' : day.name;
     return {
-      accent, items, filters, empty: items.length === 0,
+      accent, items, empty: items.length === 0,
+      mine: s.mine,
+      toggleMine: () => this.setState({ mine: !this.state.mine }),
+      minePressed: s.mine ? 'true' : 'false',
+      mineStyle: 'min-height: 52px; padding: 0 14px; border-radius: 999px; font-size: 17px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; white-space: nowrap; flex-shrink: 0; ' + (s.mine ? 'background: #121A17; color: #FFFFFF; border: 2px solid #121A17;' : 'background: #FFFFFF; color: #121A17; border: 2px solid #9AA6A2;'),
+      mineBox: 'width: 22px; height: 22px; border-radius: 6px; border: 2px solid currentColor; display: flex; align-items: center; justify-content: center; box-sizing: border-box;',
       dayTitle: rel,
       daySub: (s.day <= 1 ? day.name.toLowerCase() + ' ' : '') + day.n + ' de noviembre',
       summary: forDay.length === 0 ? '' : (pending === 0 ? 'Todo hecho' : 'Faltan ' + pending + ' de ' + forDay.length),

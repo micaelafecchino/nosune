@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Nosune · Cargar una tarea</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+main>*{flex-shrink:0}
+a{color:#0B5A4C;text-decoration:none}a:hover{color:#08453A}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F2F4F3; color: #121A17; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; overflow: hidden">
+
+  <header style="padding: 48px 12px 4px; display: flex; justify-content: space-between; align-items: center">
+    <a href="Diario.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #121A17; font-size: 18px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Cerrar</a>
+    <sc-if value="{{canGoBack}}" hint-placeholder-val="{{false}}">
+      <button onClick="{{back}}" style="min-height: 52px; padding: 0 12px; border: none; background: transparent; color: #121A17; font-size: 18px; font-weight: 700; text-decoration: underline; cursor: pointer">Atrás</button>
+    </sc-if>
+  </header>
+
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 28px; display: flex; flex-direction: column; gap: 14px">
+
+    <sc-if value="{{isWhat}}" hint-placeholder-val="{{true}}">
+      <h1 style="margin: 0; font-size: 30px; font-weight: 700">¿Qué querés cargar?</h1>
+      <span style="font-size: 18px; color: #3F4A47">Para Rosa</span>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+        <sc-for list="{{types}}" as="t" hint-placeholder-count="6">
+          <button onClick="{{t.pick}}" style="min-height: 104px; border-radius: 20px; border: 2px solid #CFD8D4; background: #FFFFFF; color: #121A17; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 8px; font-size: 18px; font-weight: 700; text-align: center">
+            <span style="width: 44px; height: 44px; border-radius: 12px; background: #E1EFEB; color: {{accent}}; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700">{{t.mark}}</span>{{t.label}}</button>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isHow}}" hint-placeholder-val="{{false}}">
+      <span style="font-size: 18px; color: #3F4A47">{{howKicker}}</span>
+      <h1 style="margin: 0; font-size: 30px; font-weight: 700">¿Cómo lo querés cargar?</h1>
+      <button onClick="{{startAudio}}" style="min-height: 88px; border-radius: 20px; border: none; background: {{accent}}; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Hablar</button>
+      <button onClick="{{startPhoto}}" style="min-height: 88px; border-radius: 20px; border: 2px solid #CFD8D4; background: #FFFFFF; color: #121A17; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg>{{cur.photo}}</button>
+      <button onClick="{{startPhoto}}" style="min-height: 88px; border-radius: 20px; border: 2px solid #CFD8D4; background: #FFFFFF; color: #121A17; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>Escribir</button>
+    </sc-if>
+
+    <sc-if value="{{isRecording}}" hint-placeholder-val="{{false}}">
+      <h1 style="margin: 0; font-size: 30px; font-weight: 700">Te escuchamos</h1>
+      <div style="display: flex; justify-content: center; padding: 8px 0">
+        <span style="width: 120px; height: 120px; border-radius: 999px; background: {{accent}}; display: flex; align-items: center; justify-content: center">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+        </span>
+      </div>
+      <p style="margin: 0; font-size: 19px; line-height: 1.55; background: #FFFFFF; border-radius: 18px; padding: 16px">{{cur.said}}</p>
+      <button onClick="{{finish}}" style="min-height: 60px; border-radius: 16px; border: none; background: #121A17; color: #FFFFFF; font-size: 19px; font-weight: 700; cursor: pointer">Terminé</button>
+    </sc-if>
+
+    <sc-if value="{{isReview}}" hint-placeholder-val="{{false}}">
+      <h1 style="margin: 0; font-size: 30px; font-weight: 700">¿Está bien así?</h1>
+      <div style="background: #FFFFFF; border: 1.5px solid #CFD8D4; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 17px; color: #3F4A47">{{cur.kicker}}</span>
+        <span style="font-size: 24px; font-weight: 700">{{cur.title}}</span>
+        <span style="font-size: 19px">{{cur.line1}}</span>
+        <span style="font-size: 18px; color: #3F4A47">{{cur.line2}}</span>
+      </div>
+
+      <sc-if value="{{askTurno}}" hint-placeholder-val="{{false}}">
+        <div role="group" aria-labelledby="deturno" style="display: flex; flex-direction: column; gap: 10px">
+          <span id="deturno" style="font-size: 20px; font-weight: 700">¿De qué turno es?</span>
+          <sc-for list="{{turnos}}" as="tu" hint-placeholder-count="3">
+            <button onClick="{{tu.pick}}" aria-pressed="{{tu.pressed}}" style="{{tu.style}}">
+              <span style="font-size: 19px; font-weight: 700">{{tu.label}}</span>
+              <span style="{{tu.subStyle}}">{{tu.sub}}</span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isTarea}}" hint-placeholder-val="{{false}}">
+        <div role="group" aria-labelledby="cada" style="display: flex; flex-direction: column; gap: 10px">
+          <span id="cada" style="font-size: 20px; font-weight: 700">¿Cada cuánto?</span>
+          <sc-for list="{{freqs}}" as="f" hint-placeholder-count="3">
+            <button onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="{{f.style}}">{{f.label}}</button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <div role="group" aria-labelledby="quien" style="display: flex; flex-direction: column; gap: 10px">
+        <span id="quien" style="font-size: 20px; font-weight: 700">{{cur.question}}</span>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+          <sc-for list="{{owners}}" as="o" hint-placeholder-count="4">
+            <button onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="{{o.style}}">{{o.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+      <button onClick="{{save}}" disabled="{{cantSave}}" style="{{saveStyle}}">{{saveLabel}}</button>
+    </sc-if>
+
+    <sc-if value="{{isSaved}}" hint-placeholder-val="{{false}}">
+      <div role="status" style="background: #E1EFEB; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 12px; margin-top: 12px">
+        <span style="font-size: 24px; font-weight: 700">Guardado</span>
+        <span style="font-size: 19px; line-height: 1.5">{{savedText}}</span>
+        <a href="Diario.dc.html" style="min-height: 56px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center">Ver las tareas</a>
+        <button onClick="{{reset}}" style="min-height: 52px; border: none; background: transparent; color: #121A17; font-size: 18px; font-weight: 700; text-decoration: underline; cursor: pointer">Cargar otra tarea</button>
+      </div>
+    </sc-if>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0B5A4C","options":["#0B5A4C","#234A87","#5B3289"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { step: 'how', type: 'tarea', owner: 'yo', freq: 'dia', turno: null, fromTurno: false };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#0B5A4C';
+    const s = this.state;
+    const TURNOS = {
+      derm: { label: 'Dermatología', sub: 'Viernes 30 de octubre · Dra. Sofía Paz', note: 'Indicó una crema y control en 3 meses' },
+      clin: { label: 'Clínica médica', sub: 'Martes 20 de octubre · Dra. Paula Ríos', note: 'Pidió un análisis de sangre' },
+      nuevo: { label: 'Otro turno', sub: 'Uno que todavía no estaba cargado', note: 'Vamos a crear el turno también' }
+    };
+    const T = {
+      turno: { label: 'Un turno', mark: 'T', photo: 'Foto del turno o del chat', said: '“A mamá le dieron turno con el traumatólogo, el doctor Herrera, el martes 18 a las 10, en el Sanatorio.”', kicker: 'Turno nuevo', title: 'Traumatología', line1: 'Martes 18 de noviembre, 10:00', line2: 'Dr. Herrera · Sanatorio [NOMBRE]', question: '¿Quién la acompaña?', done: 'Turno con traumatología el martes 18 a las 10.' },
+      consulta: { label: 'Cómo le fue en el médico', mark: 'C', photo: 'Foto de lo que le dieron', said: '“La doctora dijo que está todo bien, le dio una crema y hay que volver en tres meses.”', question: '¿Quién fue con ella?' },
+      estudio: { label: 'Un estudio o resultado', mark: 'E', photo: 'Foto del resultado', said: '“Llegaron los resultados del análisis de sangre del 3 de octubre.”', kicker: 'Resultado', title: 'Análisis de sangre', line1: '3 de octubre', line2: 'Laboratorio [NOMBRE]', question: '¿A quién le avisamos?', done: 'Guardamos el resultado en su historia.' },
+      compra: { label: 'Un remedio o compra', mark: 'R', photo: 'Foto de la caja o la receta', said: '“Hay que comprarle protectores descartables todos los meses.”', kicker: 'Compra que se repite', title: 'Protectores descartables', line1: 'Cada 30 días', line2: 'No necesita receta', question: '¿Quién se encarga?', done: 'Te vamos a avisar unos días antes de que se terminen.' },
+      gasto: { label: 'Un gasto', mark: '$', photo: 'Foto del ticket', said: '“Gasté dieciocho mil quinientos en la farmacia por el Enalapril.”', kicker: 'Gasto', title: '$ 18.500 · Farmacia', line1: 'Enalapril 10 mg', line2: 'Hoy, 1 de noviembre', question: '¿Quién lo pagó?', done: 'Guardamos el gasto de $ 18.500.' },
+      tarea: { label: 'Una tarea que se repite', mark: 'D', photo: 'Foto de la indicación', said: '“Tiene que hacer los ejercicios de rodilla a las 5 de la tarde.”', kicker: 'Tarea que se repite', title: 'Ejercicios de rodilla', line2: '15 minutos', question: '¿A quién le toca?' }
+    };
+    const F = {
+      dia: { label: 'Todos los días', line: 'Todos los días, 17:00', done: 'Va a aparecer todos los días en las tareas.' },
+      semana: { label: 'Una vez por semana', line: 'Todos los lunes, 17:00', done: 'Va a aparecer todos los lunes en las tareas.' },
+      mes: { label: 'Una vez por mes', line: 'El día 1 de cada mes, 17:00', done: 'Va a aparecer el día 1 de cada mes en las tareas.' }
+    };
+    let cur = T[s.type];
+    if (s.type === 'tarea') cur = { ...cur, line1: F[s.freq].line, done: F[s.freq].done };
+    if (s.type === 'consulta') {
+      const tu = s.turno ? TURNOS[s.turno] : null;
+      cur = { ...cur,
+        kicker: 'Cómo le fue',
+        title: tu ? (s.turno === 'nuevo' ? 'Consulta de hoy' : tu.label) : 'Consulta',
+        line1: tu ? (s.turno === 'nuevo' ? 'Hoy, 1 de noviembre' : tu.sub) : 'Falta elegir de qué turno es',
+        line2: 'Le dio una crema · volver en 3 meses',
+        done: tu ? (s.turno === 'nuevo' ? 'Creamos el turno y guardamos cómo le fue.' : 'Guardamos cómo le fue en el turno de ' + tu.label + '.') : '' };
+    }
+    const chip = (on) => 'min-height: 56px; border-radius: 14px; font-size: 18px; font-weight: 700; cursor: pointer; ' + (on ? 'background: #121A17; color: #FFFFFF; border: 2px solid #121A17;' : 'background: #FFFFFF; color: #121A17; border: 2px solid #CFD8D4;');
+    const order = ['turno', 'consulta', 'estudio', 'compra', 'gasto', 'tarea'];
+    const types = order.map((id) => ({ label: T[id].label, mark: T[id].mark, pick: () => this.setState({ type: id, step: 'how', turno: null }) }));
+    const names = { yo: 'Yo', juan: 'Juan', laura: 'Laura', none: 'Nadie todavía' };
+    const owners = ['yo', 'juan', 'laura', 'none'].map((id) => ({
+      label: names[id], pressed: s.owner === id ? 'true' : 'false',
+      pick: () => this.setState({ owner: id }), style: chip(s.owner === id)
+    }));
+    const freqs = ['dia', 'semana', 'mes'].map((id) => ({
+      label: F[id].label, pressed: s.freq === id ? 'true' : 'false',
+      pick: () => this.setState({ freq: id }), style: chip(s.freq === id)
+    }));
+    const turnos = ['derm', 'clin', 'nuevo'].map((id) => {
+      const on = s.turno === id;
+      return {
+        label: TURNOS[id].label, sub: TURNOS[id].sub, pressed: on ? 'true' : 'false',
+        pick: () => this.setState({ turno: id }),
+        style: 'min-height: 72px; border-radius: 16px; padding: 10px 16px; cursor: pointer; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; text-align: left; ' + (on ? 'background: #121A17; color: #FFFFFF; border: 2px solid #121A17;' : 'background: #FFFFFF; color: #121A17; border: 2px solid #CFD8D4;'),
+        subStyle: 'font-size: 16px; ' + (on ? 'color: #E3E8E6;' : 'color: #3F4A47;')
+      };
+    });
+    const askTurno = s.type === 'consulta' && !s.fromTurno;
+    const cantSave = s.type === 'consulta' && !s.turno;
+    const prev = { recording: 'how', review: 'how' };
+    return {
+      accent, types, owners, freqs, turnos, cur,
+      howKicker: s.fromTurno && s.turno ? 'Cómo le fue · ' + TURNOS[s.turno].label + ', ' + TURNOS[s.turno].sub.split(' · ')[0].toLowerCase() : cur.label,
+      isTarea: s.type === 'tarea', askTurno,
+      isWhat: s.step === 'what', isHow: s.step === 'how', isRecording: s.step === 'recording', isReview: s.step === 'review', isSaved: s.step === 'saved',
+      canGoBack: !!prev[s.step],
+      back: () => this.setState({ step: prev[this.state.step] || 'what' }),
+      savedText: cur.done + ' Le avisamos a la familia.',
+      cantSave,
+      saveLabel: cantSave ? 'Elegí de qué turno es' : 'Sí, guardar',
+      saveStyle: 'min-height: 60px; border-radius: 16px; border: none; font-size: 19px; font-weight: 700; ' + (cantSave ? 'background: #DCE3E0; color: #3F4A47; cursor: not-allowed;' : 'background: ' + accent + '; color: #FFFFFF; cursor: pointer;'),
+      startAudio: () => this.setState({ step: 'recording' }),
+      startPhoto: () => this.setState({ step: 'review' }),
+      finish: () => this.setState({ step: 'review' }),
+      save: () => { if (!(this.state.type === 'consulta' && !this.state.turno)) this.setState({ step: 'saved' }); },
+      reset: () => this.setState({ step: 'how' })
+    };
+  }
+}
+</script>
+</body>
+</html>

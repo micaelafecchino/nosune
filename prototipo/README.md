@@ -11,6 +11,16 @@ Para verlo e interactuar hay dos opciones:
 - **Versión web:** https://micaelafecchino.github.io/nosune/ (la sirve `index.html` en la raíz, que lee estos mismos archivos).
 - **Canvas de diseño**, para editar (pedile acceso a quien lo administra): https://claude.ai/artifact/QuvzAvdyBi5cPiXrEfF5y8
 
+## Criterios de diseño
+
+La app la van a usar sobre todo personas grandes, así que:
+
+- Letra grande (texto principal de 17–18 px, nada por debajo de 15 px) con la tipografía Atkinson Hyperlegible, pensada para baja visión.
+- Alto contraste y botones de al menos 56 px de alto.
+- Una sola idea por tarjeta, pocas cosas por pantalla y palabras simples ("Va con Juan", "Le toca a Laura").
+- Sin scroll horizontal ni menús desplegables.
+- 4 pestañas: Inicio, Turnos, Diario y Compras. Los perfiles se abren tocando el nombre arriba en el inicio.
+
 ## Pantallas
 
 Organizadas según los módulos del PRD.

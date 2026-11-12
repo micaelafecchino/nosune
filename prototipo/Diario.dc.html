@@ -2,140 +2,114 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Nosune · Control diario</title>
+<title>Nosune · Tareas de hoy</title>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0}
 main>*{flex-shrink:0}
-a{color:#0E6B5B;text-decoration:none}a:hover{color:#0A4F43}
+a{color:#0B5A4C;text-decoration:none}a:hover{color:#08453A}
 button{font-family:inherit}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F4F6F5; color: #16201D; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; overflow: hidden">
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F2F4F3; color: #121A17; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; overflow: hidden">
 
   <header style="padding: 52px 20px 12px; display: flex; flex-direction: column; gap: 12px">
-    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px">
-      <div style="display: flex; flex-direction: column; gap: 2px">
-        <span style="font-size: 13px; color: #5A6662">Rosa · mamá · domingo 1 de noviembre</span>
-        <h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">Control diario</h1>
-      </div>
-      <span style="font-size: 13px; font-weight: 700; color: #16201D; background: #FFFFFF; border: 1px solid #E2E7E5; padding: 6px 10px; border-radius: 999px; white-space: nowrap">{{doneCount}} de {{total}}</span>
+    <div>
+      <span style="font-size: 17px; color: #3F4A47">Rosa · mamá</span>
+      <h1 style="margin: 0; font-size: 32px; font-weight: 700">Tareas de hoy</h1>
     </div>
-    <div role="img" aria-label="{{progressLabel}}" style="height: 8px; border-radius: 999px; background: #DDE3E1; overflow: hidden">
-      <div style="{{barStyle}}"></div>
-    </div>
-    <div role="group" aria-label="Filtrar tareas" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; background: #E7ECEA; padding: 4px; border-radius: 12px">
+    <span style="font-size: 19px">{{summary}}</span>
+    <div role="group" aria-label="Qué tareas ver" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; background: #DCE3E0; padding: 4px; border-radius: 14px">
       <sc-for list="{{filters}}" as="f" hint-placeholder-count="2">
         <button onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="{{f.style}}">{{f.label}}</button>
       </sc-for>
     </div>
   </header>
 
-  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 20px; display: flex; flex-direction: column; gap: 10px">
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 24px; display: flex; flex-direction: column; gap: 10px">
     <sc-for list="{{items}}" as="t" hint-placeholder-count="6">
       <sc-if value="{{t.showGroup}}" hint-placeholder-val="{{false}}">
-        <h2 style="margin: 8px 0 0; font-size: 13px; font-weight: 600; color: #5A6662; text-transform: uppercase; letter-spacing: 0.06em">{{t.group}}</h2>
+        <h2 style="margin: 10px 0 0; font-size: 20px; font-weight: 700">{{t.group}}</h2>
       </sc-if>
-      <div style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 16px; padding: 12px 14px; display: flex; gap: 12px; align-items: center">
-        <span style="width: 44px; flex-shrink: 0; font-size: 14px; font-weight: 700; color: #2A3532">{{t.time}}</span>
+      <div style="{{t.cardStyle}}">
         <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 18px; font-weight: 700; color: #3F4A47">{{t.time}}</span>
           <span style="{{t.titleStyle}}">{{t.title}}</span>
-          <span style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap">
-            <span style="{{t.kindStyle}}">{{t.kind}}</span>
-            <span style="{{t.ownerDot}}">{{t.ownerInitial}}</span>
-            <span style="font-size: 12px; font-weight: 600; color: #2A3532">{{t.ownerName}}</span>
-          </span>
+          <span style="font-size: 17px; color: #3F4A47">{{t.ownerText}}</span>
         </span>
-        <button onClick="{{t.toggle}}" aria-pressed="{{t.pressed}}" aria-label="{{t.aria}}" style="{{t.btnStyle}}">{{t.status}}</button>
+        <button onClick="{{t.toggle}}" aria-pressed="{{t.pressed}}" aria-label="{{t.aria}}" style="{{t.btnStyle}}">
+          <sc-if value="{{t.done}}" hint-placeholder-val="{{false}}">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
+          </sc-if>
+        </button>
       </div>
     </sc-for>
-    <sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
-      <p style="margin: 0; padding: 16px; text-align: center; font-size: 14px; color: #5A6662; background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 16px">No tenés tareas asignadas hoy.</p>
-    </sc-if>
-    <button style="min-height: 46px; border-radius: 12px; border: 1.5px dashed #B9C4C0; background: transparent; color: #16201D; font-size: 14px; font-weight: 600; cursor: pointer">+ Agregar tarea diaria</button>
-    <p style="margin: 0; font-size: 12px; line-height: 1.45; color: #5A6662; text-align: center">Cada responsable recibe un recordatorio 10 minutos antes.</p>
   </main>
 
-  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #E2E7E5; padding: 8px 4px 28px">
-    <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a>
-    <a href="Agenda.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Turnos</a>
-    <a href="Diario.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: {{accent}}; font-size: 11px; font-weight: 700">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Diario</a>
-    <a href="Compras.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Compras</a>
-    <a href="Familia.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 48px; justify-content: center; color: #5A6662; font-size: 11px; font-weight: 500">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/></svg>Perfiles</a>
+  <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #FFFFFF; border-top: 1.5px solid #CFD8D4; padding: 8px 6px 26px">
+    <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; justify-content: center; border-radius: 14px; color: #3F4A47; font-size: 16px; font-weight: 700">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a>
+    <a href="Agenda.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; justify-content: center; border-radius: 14px; color: #3F4A47; font-size: 16px; font-weight: 700">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Turnos</a>
+    <a href="Diario.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; justify-content: center; border-radius: 14px; color: {{accent}}; font-size: 16px; font-weight: 700; background: #E1EFEB">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Diario</a>
+    <a href="Compras.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; justify-content: center; border-radius: 14px; color: #3F4A47; font-size: 16px; font-weight: 700">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Compras</a>
   </nav>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0E6B5B","options":["#0E6B5B","#2F5DA8","#6B3FA0"]},"$preview":{"width":390,"height":844}}'>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0B5A4C","options":["#0B5A4C","#234A87","#5B3289"]},"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = { done: { 1: true, 2: true }, mine: false };
   }
   renderVals() {
-    const accent = this.props.accent ?? '#0E6B5B';
-    const who = {
-      yo: { name: 'Vos', initial: 'V', bg: '#E3F1EE', fg: accent },
-      juan: { name: 'Juan', initial: 'J', bg: '#E8EEF8', fg: '#2F5DA8' },
-      laura: { name: 'Laura', initial: 'L', bg: '#FBEEDF', fg: '#A4500B' }
-    };
-    const kinds = {
-      Medicamento: 'background: #FBEEDF; color: #7A3A06;',
-      Ejercicio: 'background: #E8EEF8; color: #234A87;',
-      Control: 'background: #EEF1F0; color: #2A3532;'
-    };
+    const accent = this.props.accent ?? '#0B5A4C';
+    const names = { yo: 'Te toca a vos', juan: 'Le toca a Juan', laura: 'Le toca a Laura' };
     const base = [
-      { id: 1, group: 'Mañana', time: '8:00', title: 'Enalapril 10 mg', kind: 'Medicamento', owner: 'laura' },
-      { id: 2, group: 'Mañana', time: '10:00', title: 'Caminar 20 minutos', kind: 'Ejercicio', owner: 'laura' },
-      { id: 3, group: 'Tarde', time: '17:00', title: 'Ejercicios de rodilla por videollamada', kind: 'Ejercicio', owner: 'yo' },
-      { id: 4, group: 'Tarde', time: '18:00', title: 'Tomar la presión y anotarla', kind: 'Control', owner: 'laura' },
-      { id: 5, group: 'Noche', time: '20:00', title: 'Enalapril 10 mg', kind: 'Medicamento', owner: 'laura' },
-      { id: 6, group: 'Noche', time: '21:00', title: 'Calcio + vitamina D', kind: 'Medicamento', owner: 'juan' }
+      { id: 1, group: 'Mañana', time: '8:00', title: 'Enalapril 10 mg', owner: 'laura' },
+      { id: 2, group: 'Mañana', time: '10:00', title: 'Caminar 20 minutos', owner: 'laura' },
+      { id: 3, group: 'Tarde', time: '17:00', title: 'Ejercicios de rodilla', owner: 'yo' },
+      { id: 4, group: 'Tarde', time: '18:00', title: 'Tomar la presión', owner: 'laura' },
+      { id: 5, group: 'Noche', time: '20:00', title: 'Enalapril 10 mg', owner: 'laura' },
+      { id: 6, group: 'Noche', time: '21:00', title: 'Calcio + vitamina D', owner: 'juan' }
     ];
     const done = this.state.done;
     const list = base.filter((t) => !this.state.mine || t.owner === 'yo');
     const items = list.map((t, i) => {
       const d = !!done[t.id];
-      const o = who[t.owner];
       return {
         ...t,
+        done: d,
         showGroup: i === 0 || list[i - 1].group !== t.group,
-        status: d ? 'Hecho' : 'Pendiente',
+        ownerText: d ? 'Hecho' : names[t.owner],
         pressed: d ? 'true' : 'false',
-        aria: t.title + ' ' + t.time + ': ' + (d ? 'hecho' : 'pendiente'),
+        aria: (d ? 'Desmarcar ' : 'Marcar como hecho: ') + t.title + ', ' + t.time,
         toggle: () => this.setState({ done: { ...this.state.done, [t.id]: !this.state.done[t.id] } }),
-        titleStyle: 'font-size: 15px; font-weight: 600; line-height: 1.3; ' + (d ? 'color: #5A6662; text-decoration: line-through;' : 'color: #16201D;'),
-        kindStyle: 'font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; ' + kinds[t.kind],
-        ownerName: o.name, ownerInitial: o.initial,
-        ownerDot: 'width: 20px; height: 20px; border-radius: 999px; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; background: ' + o.bg + '; color: ' + o.fg + ';',
-        btnStyle: 'min-width: 92px; min-height: 40px; padding: 0 12px; border-radius: 999px; font-size: 13px; font-weight: 700; cursor: pointer; flex-shrink: 0; ' + (d ? 'background: ' + accent + '; color: #FFFFFF; border: 2px solid ' + accent + ';' : 'background: #FFFFFF; color: #16201D; border: 2px solid #9AA6A2;')
+        cardStyle: 'border-radius: 18px; padding: 14px 14px 14px 18px; display: flex; gap: 12px; align-items: center; ' + (d ? 'background: #E9EEEC; border: 1.5px solid #DCE3E0;' : 'background: #FFFFFF; border: 1.5px solid #CFD8D4;'),
+        titleStyle: 'font-size: 20px; font-weight: 700; line-height: 1.25; ' + (d ? 'color: #3F4A47; text-decoration: line-through;' : 'color: #121A17;'),
+        btnStyle: 'width: 60px; height: 60px; flex-shrink: 0; border-radius: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; ' + (d ? 'background: ' + accent + '; border: 3px solid ' + accent + ';' : 'background: #FFFFFF; border: 3px solid #6B7773;')
       };
     });
-    const doneCount = base.filter((t) => done[t.id]).length;
-    const pct = Math.round((doneCount / base.length) * 100);
-    const filters = [['all', 'Todas'], ['mine', 'Mías']].map(([id, label]) => {
+    const pending = base.filter((t) => !done[t.id]).length;
+    const filters = [['all', 'Todas'], ['mine', 'Las mías']].map(([id, label]) => {
       const on = (id === 'mine') === this.state.mine;
       return {
         label, pressed: on ? 'true' : 'false',
         pick: () => this.setState({ mine: id === 'mine' }),
-        style: 'min-height: 36px; border-radius: 9px; border: none; font-size: 13px; font-weight: 600; cursor: pointer; ' + (on ? 'background: #FFFFFF; color: #16201D; box-shadow: 0 1px 2px rgba(22,32,29,0.12);' : 'background: transparent; color: #4A5653;')
+        style: 'min-height: 48px; border-radius: 11px; border: none; font-size: 17px; font-weight: 700; cursor: pointer; ' + (on ? 'background: #FFFFFF; color: #121A17;' : 'background: transparent; color: #3F4A47;')
       };
     });
     return {
-      accent, items, filters, empty: items.length === 0,
-      doneCount, total: base.length,
-      progressLabel: doneCount + ' de ' + base.length + ' tareas hechas',
-      barStyle: 'height: 100%; border-radius: 999px; background: ' + accent + '; width: ' + pct + '%;'
+      accent, items, filters,
+      summary: pending === 0 ? 'Todo hecho por hoy' : 'Faltan ' + pending + ' de ' + base.length
     };
   }
 }

@@ -2,134 +2,108 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Nosune · Carga rápida</title>
+<title>Nosune · Cargar algo</title>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0}
 main>*{flex-shrink:0}
-a{color:#0E6B5B;text-decoration:none}a:hover{color:#0A4F43}
+a{color:#0B5A4C;text-decoration:none}a:hover{color:#08453A}
 button{font-family:inherit}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F4F6F5; color: #16201D; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; overflow: hidden">
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F2F4F3; color: #121A17; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; overflow: hidden">
 
-  <header style="padding: 48px 12px 8px; display: flex; align-items: center; justify-content: space-between">
-    <a href="Main.dc.html" aria-label="Cerrar" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 999px; color: #16201D">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-    </a>
-    <span style="font-size: 15px; font-weight: 600">Carga rápida · Rosa</span>
-    <span style="width: 44px"></span>
+  <header style="padding: 48px 12px 4px">
+    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #121A17; font-size: 18px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Cerrar</a>
   </header>
 
-  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 24px; display: flex; flex-direction: column; gap: 18px">
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 28px; display: flex; flex-direction: column; gap: 16px">
 
     <sc-if value="{{isChoose}}" hint-placeholder-val="{{true}}">
-      <h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">¿Qué querés cargar?</h1>
-      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #4A5653">Contalo como te salga. Nosune arma el turno, la consulta o la tarea y vos solo confirmás.</p>
-      <div style="display: flex; flex-direction: column; gap: 10px">
-        <button onClick="{{startAudio}}" style="min-height: 76px; border-radius: 18px; border: none; background: {{accent}}; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 0 18px; text-align: left">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
-          <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; font-weight: 700">Grabar un audio</span><span style="font-size: 13px; opacity: 0.9">Ideal a la salida de la consulta</span></span>
-        </button>
-        <button onClick="{{startPhoto}}" style="min-height: 76px; border-radius: 18px; border: 1px solid #E2E7E5; background: #FFFFFF; color: #16201D; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 0 18px; text-align: left">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
-          <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; font-weight: 700">Foto o captura</span><span style="font-size: 13px; color: #5A6662">Receta, orden, estudio o chat con el médico</span></span>
-        </button>
-        <button onClick="{{startPhoto}}" style="min-height: 76px; border-radius: 18px; border: 1px solid #E2E7E5; background: #FFFFFF; color: #16201D; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 0 18px; text-align: left">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
-          <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; font-weight: 700">Escribir</span><span style="font-size: 13px; color: #5A6662">Turno, consulta, compra o tarea diaria</span></span>
-        </button>
-      </div>
-      <div style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
-        <span style="font-size: 14px; font-weight: 700">También podés reenviar</span>
-        <span style="font-size: 13px; line-height: 1.45; color: #4A5653">Mensajes de WhatsApp o emails con resultados. Se cargan solos en el perfil de Rosa.</span>
-      </div>
+      <h1 style="margin: 0; font-size: 30px; font-weight: 700">¿Cómo querés cargarlo?</h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #3F4A47">Contalo como te salga. Después lo revisás.</p>
+      <button onClick="{{startAudio}}" style="min-height: 88px; border-radius: 20px; border: none; background: {{accent}}; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Hablar</button>
+      <button onClick="{{startPhoto}}" style="min-height: 88px; border-radius: 20px; border: 2px solid #CFD8D4; background: #FFFFFF; color: #121A17; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg>Sacar una foto</button>
+      <button onClick="{{startPhoto}}" style="min-height: 88px; border-radius: 20px; border: 2px solid #CFD8D4; background: #FFFFFF; color: #121A17; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>Escribir</button>
     </sc-if>
 
     <sc-if value="{{isRecording}}" hint-placeholder-val="{{false}}">
-      <h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">Te escuchamos…</h1>
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 12px 0">
-        <span style="width: 120px; height: 120px; border-radius: 999px; background: #E3F1EE; display: flex; align-items: center; justify-content: center">
-          <span style="width: 80px; height: 80px; border-radius: 999px; background: {{accent}}; display: flex; align-items: center; justify-content: center">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
-          </span>
+      <h1 style="margin: 0; font-size: 30px; font-weight: 700">Te escuchamos</h1>
+      <div style="display: flex; justify-content: center; padding: 8px 0">
+        <span style="width: 120px; height: 120px; border-radius: 999px; background: {{accent}}; display: flex; align-items: center; justify-content: center">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
         </span>
-        <span style="font-size: 20px; font-weight: 700">0:14</span>
       </div>
-      <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #2A3532; background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 16px; padding: 14px">“Me llamaron del consultorio de traumatología, a mamá le dieron turno el martes 18 a las 10 con el doctor Herrera, en el Sanatorio. Hay que llevar la radiografía de la rodilla.”</p>
-      <button onClick="{{finish}}" style="min-height: 52px; border-radius: 14px; border: none; background: #16201D; color: #FFFFFF; font-size: 16px; font-weight: 700; cursor: pointer">Listo</button>
+      <p style="margin: 0; font-size: 19px; line-height: 1.55; background: #FFFFFF; border-radius: 18px; padding: 16px">“A mamá le dieron turno con el traumatólogo, el doctor Herrera, el martes 18 a las 10, en el Sanatorio.”</p>
+      <button onClick="{{finish}}" style="min-height: 60px; border-radius: 16px; border: none; background: #121A17; color: #FFFFFF; font-size: 19px; font-weight: 700; cursor: pointer">Terminé</button>
     </sc-if>
 
     <sc-if value="{{isReview}}" hint-placeholder-val="{{false}}">
-      <h1 style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.01em">Esto entendimos</h1>
-      <span style="font-size: 13px; color: #5A6662">{{sourceLabel}} · revisá y confirmá</span>
-      <div style="background: #FFFFFF; border: 1px solid #E2E7E5; border-radius: 18px; display: flex; flex-direction: column">
-        <div style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1F0"><span style="font-size: 13px; color: #5A6662">Tipo</span><span style="font-size: 14px; font-weight: 700">Turno próximo</span></div>
-        <div style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1F0"><span style="font-size: 13px; color: #5A6662">Fecha y hora</span><span style="font-size: 14px; font-weight: 700">Mar 18 nov · 10:00</span></div>
-        <div style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1F0"><span style="font-size: 13px; color: #5A6662">Médico</span><span style="font-size: 14px; font-weight: 700; text-align: right">Dr. Herrera · Traumatología<br><span style="font-size: 12px; font-weight: 600; color: {{accent}}">Ficha nueva</span></span></div>
-        <div style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1F0"><span style="font-size: 13px; color: #5A6662">Institución</span><span style="font-size: 14px; font-weight: 700">Sanatorio [NOMBRE]</span></div>
-        <div style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1F0"><span style="font-size: 13px; color: #5A6662">Estudios</span><span style="font-size: 14px; font-weight: 700; text-align: right">Radiografía de rodilla<br><span style="font-size: 12px; font-weight: 600; color: {{accent}}">Ya está cargada</span></span></div>
-        <div style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 14px"><span style="font-size: 13px; color: #5A6662">Diagnóstico</span><span style="font-size: 14px; font-weight: 700">Rodilla derecha</span></div>
+      <h1 style="margin: 0; font-size: 30px; font-weight: 700">¿Está bien así?</h1>
+      <div style="background: #FFFFFF; border: 1.5px solid #CFD8D4; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 17px; color: #3F4A47">Turno nuevo</span>
+        <span style="font-size: 24px; font-weight: 700">Traumatología</span>
+        <span style="font-size: 19px">Martes 18 de noviembre, 10:00</span>
+        <span style="font-size: 18px; color: #3F4A47">Dr. Herrera · Sanatorio [NOMBRE]</span>
       </div>
-      <div role="group" aria-labelledby="resp" style="display: flex; flex-direction: column; gap: 8px">
-        <span id="resp" style="font-size: 14px; font-weight: 700">¿Quién la acompaña?</span>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap">
+      <div role="group" aria-labelledby="quien" style="display: flex; flex-direction: column; gap: 10px">
+        <span id="quien" style="font-size: 20px; font-weight: 700">¿Quién la acompaña?</span>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
           <sc-for list="{{owners}}" as="o" hint-placeholder-count="4">
             <button onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="{{o.style}}">{{o.label}}</button>
           </sc-for>
         </div>
       </div>
-      <button onClick="{{save}}" style="min-height: 52px; border-radius: 14px; border: none; background: {{accent}}; color: #FFFFFF; font-size: 16px; font-weight: 700; cursor: pointer">Guardar turno</button>
+      <button onClick="{{save}}" style="min-height: 60px; border-radius: 16px; border: none; background: {{accent}}; color: #FFFFFF; font-size: 19px; font-weight: 700; cursor: pointer">Sí, guardar</button>
     </sc-if>
 
     <sc-if value="{{isSaved}}" hint-placeholder-val="{{false}}">
-      <div role="status" style="background: #E3F1EE; border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 10px; margin-top: 20px">
-        <span style="font-size: 18px; font-weight: 700; color: #0A4F43">Turno guardado</span>
-        <span style="font-size: 14px; line-height: 1.5">{{savedText}}</span>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap">
-          <a href="Agenda.dc.html" style="min-height: 40px; padding: 0 14px; display: flex; align-items: center; border-radius: 10px; background: {{accent}}; color: #FFFFFF; font-size: 13px; font-weight: 600">Ver turnos</a>
-          <button onClick="{{reset}}" style="min-height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #B9D3CC; background: #FFFFFF; color: #16201D; font-size: 13px; font-weight: 600; cursor: pointer">Cargar otra cosa</button>
-        </div>
+      <div role="status" style="background: #E1EFEB; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 12px; margin-top: 12px">
+        <span style="font-size: 24px; font-weight: 700">Guardado</span>
+        <span style="font-size: 19px; line-height: 1.5">{{savedText}}</span>
+        <a href="Main.dc.html" style="min-height: 56px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center">Volver al inicio</a>
       </div>
     </sc-if>
   </main>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0E6B5B","options":["#0E6B5B","#2F5DA8","#6B3FA0"]},"$preview":{"width":390,"height":844}}'>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0B5A4C","options":["#0B5A4C","#234A87","#5B3289"]},"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { step: 'choose', source: 'audio', owner: 'juan' };
+    this.state = { step: 'choose', owner: 'juan' };
   }
   renderVals() {
-    const accent = this.props.accent ?? '#0E6B5B';
+    const accent = this.props.accent ?? '#0B5A4C';
     const s = this.state;
-    const names = { yo: 'Vos', juan: 'Juan', laura: 'Laura', none: 'Sin asignar' };
+    const names = { yo: 'Yo', juan: 'Juan', laura: 'Laura', none: 'Todavía no sé' };
     const owners = ['yo', 'juan', 'laura', 'none'].map((id) => {
       const on = s.owner === id;
       return {
         label: names[id], pressed: on ? 'true' : 'false',
         pick: () => this.setState({ owner: id }),
-        style: 'min-height: 40px; padding: 0 14px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; ' + (on ? 'background: #16201D; color: #FFFFFF; border: 1px solid #16201D;' : 'background: #FFFFFF; color: #16201D; border: 1px solid #E2E7E5;')
+        style: 'min-height: 56px; border-radius: 14px; font-size: 18px; font-weight: 700; cursor: pointer; ' + (on ? 'background: #121A17; color: #FFFFFF; border: 2px solid #121A17;' : 'background: #FFFFFF; color: #121A17; border: 2px solid #CFD8D4;')
       };
     });
-    const who = s.owner === 'none' ? 'Quedó sin responsable: lo vas a ver marcado en el inicio.' : (s.owner === 'yo' ? 'Vos la acompañás.' : names[s.owner] + ' la acompaña.');
+    const who = s.owner === 'none' ? 'Falta decidir quién la acompaña.' : (s.owner === 'yo' ? 'La acompañás vos.' : 'La acompaña ' + names[s.owner] + '.');
     return {
       accent, owners,
       isChoose: s.step === 'choose', isRecording: s.step === 'recording', isReview: s.step === 'review', isSaved: s.step === 'saved',
-      sourceLabel: s.source === 'audio' ? 'Desde tu audio' : 'Desde la imagen que subiste',
-      savedText: 'Traumatología, martes 18 de noviembre a las 10:00. ' + who + ' Le avisamos a la familia.',
-      startAudio: () => this.setState({ step: 'recording', source: 'audio' }),
-      startPhoto: () => this.setState({ step: 'review', source: 'foto' }),
+      savedText: 'Turno con traumatología el martes 18 a las 10. ' + who + ' Le avisamos a la familia.',
+      startAudio: () => this.setState({ step: 'recording' }),
+      startPhoto: () => this.setState({ step: 'review' }),
       finish: () => this.setState({ step: 'review' }),
-      save: () => this.setState({ step: 'saved' }),
-      reset: () => this.setState({ step: 'choose' })
+      save: () => this.setState({ step: 'saved' })
     };
   }
 }

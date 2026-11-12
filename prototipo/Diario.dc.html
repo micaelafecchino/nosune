@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Nosune · Tareas de hoy</title>
+<title>Nosune · Tareas del día</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -22,9 +22,20 @@ button{font-family:inherit}
   <header style="padding: 52px 20px 12px; display: flex; flex-direction: column; gap: 12px">
     <div>
       <span style="font-size: 17px; color: #3F4A47">Rosa · mamá</span>
-      <h1 style="margin: 0; font-size: 32px; font-weight: 700">Tareas de hoy</h1>
+      <h1 style="margin: 0; font-size: 32px; font-weight: 700">Tareas</h1>
     </div>
-    <span style="font-size: 19px">{{summary}}</span>
+    <div style="display: flex; align-items: center; gap: 8px">
+      <button onClick="{{prevDay}}" disabled="{{isFirst}}" aria-label="Día anterior" style="{{prevStyle}}">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div style="flex: 1; text-align: center; display: flex; flex-direction: column">
+        <span style="font-size: 20px; font-weight: 700">{{dayTitle}}</span>
+        <span style="font-size: 17px; color: #3F4A47">{{daySub}}</span>
+      </div>
+      <button onClick="{{nextDay}}" disabled="{{isLast}}" aria-label="Día siguiente" style="{{nextStyle}}">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
     <div role="group" aria-label="Qué tareas ver" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; background: #DCE3E0; padding: 4px; border-radius: 14px">
       <sc-for list="{{filters}}" as="f" hint-placeholder-count="2">
         <button onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="{{f.style}}">{{f.label}}</button>
@@ -33,13 +44,16 @@ button{font-family:inherit}
   </header>
 
   <main style="flex: 1; overflow-y: auto; padding: 4px 20px 24px; display: flex; flex-direction: column; gap: 10px">
+    <span style="font-size: 19px; font-weight: 700">{{summary}}</span>
     <sc-for list="{{items}}" as="t" hint-placeholder-count="6">
-      <sc-if value="{{t.showGroup}}" hint-placeholder-val="{{false}}">
-        <h2 style="margin: 10px 0 0; font-size: 20px; font-weight: 700">{{t.group}}</h2>
-      </sc-if>
       <div style="{{t.cardStyle}}">
         <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
-          <span style="font-size: 18px; font-weight: 700; color: #3F4A47">{{t.time}}</span>
+          <span style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+            <span style="font-size: 18px; font-weight: 700; color: #3F4A47">{{t.time}}</span>
+            <sc-if value="{{t.showFreq}}" hint-placeholder-val="{{false}}">
+              <span style="font-size: 15px; font-weight: 700; padding: 2px 10px; border-radius: 999px; background: #E8EEF8; color: #1C3D70">{{t.freqLabel}}</span>
+            </sc-if>
+          </span>
           <span style="{{t.titleStyle}}">{{t.title}}</span>
           <span style="{{t.ownerStyle}}">{{t.ownerText}}</span>
         </span>
@@ -50,6 +64,9 @@ button{font-family:inherit}
         </button>
       </div>
     </sc-for>
+    <sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+      <p style="margin: 0; padding: 18px; text-align: center; font-size: 18px; color: #3F4A47; background: #FFFFFF; border-radius: 18px">No tenés tareas este día.</p>
+    </sc-if>
   </main>
 
   <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: end; background: #FFFFFF; border-top: 1.5px solid #CFD8D4; padding: 8px 4px 26px">
@@ -71,34 +88,51 @@ button{font-family:inherit}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { done: { 1: { by: 'laura', at: '8:05' }, 2: { by: 'laura', at: '10:20' } }, mine: false };
+    this.state = { day: 0, mine: false, done: { '0-1': { by: 'laura', at: '8:05' }, '0-2': { by: 'laura', at: '10:20' } } };
   }
   renderVals() {
     const accent = this.props.accent ?? '#0B5A4C';
-    const names = { yo: 'Te toca a vos', juan: 'Le toca a Juan', laura: 'Le toca a Laura' };
-    const base = [
-      { id: 1, group: 'Mañana', time: '8:00', title: 'Enalapril 10 mg', owner: 'laura' },
-      { id: 2, group: 'Mañana', time: '10:00', title: 'Caminar 20 minutos', owner: 'laura' },
-      { id: 3, group: 'Tarde', time: '17:00', title: 'Ejercicios de rodilla', owner: 'yo' },
-      { id: 4, group: 'Tarde', time: '18:00', title: 'Tomar la presión', owner: 'laura' },
-      { id: 5, group: 'Noche', time: '20:00', title: 'Enalapril 10 mg', owner: 'laura' },
-      { id: 6, group: 'Noche', time: '21:00', title: 'Calcio + vitamina D', owner: 'juan' }
+    const s = this.state;
+    // Semana del domingo 1 al sábado 7 de noviembre. weekday: 0 = domingo.
+    const days = [
+      { n: 1, wd: 0, name: 'Domingo' }, { n: 2, wd: 1, name: 'Lunes' }, { n: 3, wd: 2, name: 'Martes' },
+      { n: 4, wd: 3, name: 'Miércoles' }, { n: 5, wd: 4, name: 'Jueves' }, { n: 6, wd: 5, name: 'Viernes' }, { n: 7, wd: 6, name: 'Sábado' }
     ];
-    const done = this.state.done;
-    const list = base.filter((t) => !this.state.mine || t.owner === 'yo');
-    const items = list.map((t, i) => {
-      const d = !!done[t.id];
+    const tasks = [
+      { id: 1, time: '8:00', title: 'Enalapril 10 mg', owner: 'laura', freq: 'dia' },
+      { id: 2, time: '10:00', title: 'Caminar 20 minutos', owner: 'laura', freq: 'dia' },
+      { id: 7, time: '9:00', title: 'Pedir la receta de Enalapril', owner: 'yo', freq: 'mes', monthDay: 1 },
+      { id: 8, time: '11:00', title: 'Armar el pastillero de la semana', owner: 'juan', freq: 'semana', weekdays: [0], freqLabel: 'Cada domingo' },
+      { id: 9, time: '15:00', title: 'Kinesiología', owner: 'laura', freq: 'semana', weekdays: [1, 4], freqLabel: 'Lunes y jueves' },
+      { id: 3, time: '17:00', title: 'Ejercicios de rodilla', owner: 'yo', freq: 'dia' },
+      { id: 4, time: '18:00', title: 'Tomar la presión', owner: 'laura', freq: 'dia' },
+      { id: 5, time: '20:00', title: 'Enalapril 10 mg', owner: 'laura', freq: 'dia' },
+      { id: 6, time: '21:00', title: 'Calcio + vitamina D', owner: 'juan', freq: 'dia' }
+    ];
+    const toMin = (t) => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+    const day = days[s.day];
+    const forDay = tasks
+      .filter((t) => t.freq === 'dia' || (t.freq === 'semana' && t.weekdays.indexOf(day.wd) !== -1) || (t.freq === 'mes' && t.monthDay === day.n))
+      .sort((a, b) => toMin(a.time) - toMin(b.time));
+    const list = forDay.filter((t) => !s.mine || t.owner === 'yo');
+    const toca = { yo: 'Te toca a vos', juan: 'Le toca a Juan', laura: 'Le toca a Laura' };
+    const quien = { juan: 'Juan', laura: 'Laura' };
+    const items = list.map((t) => {
+      const key = s.day + '-' + t.id;
+      const rec = s.done[key];
+      const d = !!rec;
       return {
         ...t,
         done: d,
-        showGroup: i === 0 || list[i - 1].group !== t.group,
-        ownerText: d ? (done[t.id].by === 'yo' ? 'Lo marcaste vos' + (done[t.id].at ? ' a las ' + done[t.id].at : ' recién') : 'Lo marcó ' + { juan: 'Juan', laura: 'Laura' }[done[t.id].by] + ' a las ' + done[t.id].at) : names[t.owner],
+        showFreq: t.freq !== 'dia',
+        freqLabel: t.freq === 'mes' ? 'Una vez por mes' : t.freqLabel,
+        ownerText: d ? (rec.by === 'yo' ? 'Lo marcaste vos' + (rec.at ? ' a las ' + rec.at : ' recién') : 'Lo marcó ' + quien[rec.by] + ' a las ' + rec.at) : toca[t.owner],
         ownerStyle: 'font-size: 17px; ' + (d ? 'font-weight: 700; color: #08453A;' : 'color: #3F4A47;'),
         pressed: d ? 'true' : 'false',
         aria: (d ? 'Desmarcar ' : 'Marcar como hecho: ') + t.title + ', ' + t.time,
         toggle: () => {
           const next = { ...this.state.done };
-          if (next[t.id]) delete next[t.id]; else next[t.id] = { by: 'yo', at: '' };
+          if (next[key]) delete next[key]; else next[key] = { by: 'yo', at: '' };
           this.setState({ done: next });
         },
         cardStyle: 'border-radius: 18px; padding: 14px 14px 14px 18px; display: flex; gap: 12px; align-items: center; ' + (d ? 'background: #E9EEEC; border: 1.5px solid #DCE3E0;' : 'background: #FFFFFF; border: 1.5px solid #CFD8D4;'),
@@ -106,18 +140,26 @@ class Component extends DCLogic {
         btnStyle: 'width: 60px; height: 60px; flex-shrink: 0; border-radius: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; ' + (d ? 'background: ' + accent + '; border: 3px solid ' + accent + ';' : 'background: #FFFFFF; border: 3px solid #6B7773;')
       };
     });
-    const pending = base.filter((t) => !done[t.id]).length;
+    const pending = forDay.filter((t) => !s.done[s.day + '-' + t.id]).length;
     const filters = [['all', 'Todas'], ['mine', 'Las mías']].map(([id, label]) => {
-      const on = (id === 'mine') === this.state.mine;
+      const on = (id === 'mine') === s.mine;
       return {
         label, pressed: on ? 'true' : 'false',
         pick: () => this.setState({ mine: id === 'mine' }),
         style: 'min-height: 48px; border-radius: 11px; border: none; font-size: 17px; font-weight: 700; cursor: pointer; ' + (on ? 'background: #FFFFFF; color: #121A17;' : 'background: transparent; color: #3F4A47;')
       };
     });
+    const arrow = (off) => 'width: 56px; height: 56px; flex-shrink: 0; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 0; ' + (off ? 'background: transparent; border: 2px solid #DCE3E0; color: #9AA6A2; cursor: not-allowed;' : 'background: #FFFFFF; border: 2px solid #CFD8D4; color: #121A17; cursor: pointer;');
+    const rel = s.day === 0 ? 'Hoy' : s.day === 1 ? 'Mañana' : day.name;
     return {
-      accent, items, filters,
-      summary: pending === 0 ? 'Todo hecho por hoy' : 'Faltan ' + pending + ' de ' + base.length
+      accent, items, filters, empty: items.length === 0,
+      dayTitle: rel,
+      daySub: (s.day <= 1 ? day.name.toLowerCase() + ' ' : '') + day.n + ' de noviembre',
+      summary: forDay.length === 0 ? '' : (pending === 0 ? 'Todo hecho' : 'Faltan ' + pending + ' de ' + forDay.length),
+      isFirst: s.day === 0, isLast: s.day === days.length - 1,
+      prevStyle: arrow(s.day === 0), nextStyle: arrow(s.day === days.length - 1),
+      prevDay: () => { if (this.state.day > 0) this.setState({ day: this.state.day - 1 }); },
+      nextDay: () => { if (this.state.day < days.length - 1) this.setState({ day: this.state.day + 1 }); }
     };
   }
 }

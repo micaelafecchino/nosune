@@ -42,7 +42,7 @@ Organizadas según los módulos del PRD.
 
 | Archivo | Pantalla |
 |---|---|
-| `Diario.dc.html` | 8 · Control diario: medicamentos y ejercicios del día, estado pendiente/hecho, responsable y quién la marcó como hecha (y a qué hora) |
+| `Diario.dc.html` | 8 · Tareas del día: muestra lo que toca cada día, incluidas las tareas semanales y mensuales (con su etiqueta de frecuencia); flechas para ver otros días; estado, responsable y quién la marcó como hecha |
 | `Compras.dc.html` | 9 · Compras recurrentes: recordatorio, receta, marcar como comprado, quién se ocupó, cuánto y dónde (opcional) |
 
 **Cross app**

@@ -1,6 +1,6 @@
 # Prototipo de diseño · v1
 
-Prototipo clickeable de la app mobile (19 pantallas de 390×844).
+Prototipo clickeable de la app mobile (20 pantallas de 390×844).
 
 ## Cómo verlo
 
@@ -20,11 +20,17 @@ La app la van a usar sobre todo personas grandes, así que:
 - Paleta: índigo (#4433C9) como color principal, coral para lo que necesita atención, rojo solo para emergencia; fondo lavanda muy claro y tarjetas blancas con sombra suave.
 - Una sola idea por tarjeta, pocas cosas por pantalla y palabras simples ("Va con Juan", "Le toca a Laura").
 - Sin scroll horizontal ni menús desplegables.
+- Toda la carga es un chat que acepta audios y pregunta lo que falta; la carga manual queda siempre como respaldo.
 - "Solo lo mío" en Inicio, Turnos, Diario y Compras para ver rápido lo que te toca.
 - "Cómo le fue en el médico" siempre queda asociado a un turno: desde el turno ya va asociado; desde + Cargar se elige el turno antes de guardar.
 - Barra de abajo con Inicio, Turnos, un botón central grande **Cargar** (turno, consulta, estudio, remedio o compra, gasto, tarea que se repite cada día, semana o mes), Diario y Compras. Los perfiles se abren tocando el nombre arriba en el inicio.
 
 ## Pantallas
+
+| Archivo | Pantalla |
+|---|---|
+| `Bienvenida.dc.html` | 0 · Primera vez: chat donde el usuario cuenta en un audio sobre la persona que cuida y la app pregunta lo que falta para armar el perfil |
+
 
 Organizadas según los módulos del PRD.
 
@@ -38,7 +44,7 @@ Organizadas según los módulos del PRD.
 | `Consulta.dc.html` | 4 · Consulta realizada: médico, institución, resumen, indicaciones, recetas, compartir por WhatsApp |
 | `Medicos.dc.html` | 5b · Médicos: listado de los médicos con botón para llamar y ver sus datos (pestaña dentro de Turnos) |
 | `Medico.dc.html` | 5 · Ficha de contacto del médico |
-| `Cargar.dc.html` | 6 · Cargar (botón central): primero qué (turno, consulta, estudio, remedio o compra, gasto, tarea que se repite cada día, semana o mes), después cómo (hablar, foto o escribir) y revisión |
+| `Cargar.dc.html` | 6 · Cargar: un chat que acepta audios. Dos tipos de audio: grabar la consulta en vivo o contar cómo le fue ("como se lo contarías a tus hermanos"). La app detecta todo lo que hay en el audio, pregunta solo lo que falta y muestra qué va a guardar. "Cargar a mano" queda como respaldo |
 | `CargarTurno.dc.html` | 6b · Cargar un turno: se abre desde "+ Cargar un turno" en Turnos, directo en el paso de cómo cargarlo |
 | `CargarTarea.dc.html` | 6c · Cargar una tarea que se repite: se abre desde Diario |
 | `CargarCompra.dc.html` | 6d · Cargar una compra: se abre desde Compras |

@@ -9,21 +9,21 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0}
 main>*{flex-shrink:0}
-a{color:#0B5A4C;text-decoration:none}a:hover{color:#08453A}
+a{color:#4433C9;text-decoration:none}a:hover{color:#2E2391}
 button{font-family:inherit}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F2F4F3; color: #121A17; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; overflow: hidden">
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F5F3FA; color: #1A1730; font-family: 'Lexend', system-ui, sans-serif; overflow: hidden">
 
   <header style="padding: 48px 12px 4px; display: flex; justify-content: space-between; align-items: center">
-    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #121A17; font-size: 18px; font-weight: 700">
+    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #1A1730; font-size: 18px; font-weight: 700">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Cerrar</a>
     <sc-if value="{{canGoBack}}" hint-placeholder-val="{{false}}">
-      <button onClick="{{back}}" style="min-height: 52px; padding: 0 12px; border: none; background: transparent; color: #121A17; font-size: 18px; font-weight: 700; text-decoration: underline; cursor: pointer">Atrás</button>
+      <button onClick="{{back}}" style="min-height: 52px; padding: 0 12px; border: none; background: transparent; color: #1A1730; font-size: 18px; font-weight: 700; text-decoration: underline; cursor: pointer">Atrás</button>
     </sc-if>
   </header>
 
@@ -31,23 +31,23 @@ button{font-family:inherit}
 
     <sc-if value="{{isWhat}}" hint-placeholder-val="{{true}}">
       <h1 style="margin: 0; font-size: 30px; font-weight: 700">¿Qué querés cargar?</h1>
-      <span style="font-size: 18px; color: #3F4A47">Para Rosa</span>
+      <span style="font-size: 18px; color: #4D4A63">Para Rosa</span>
       <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
         <sc-for list="{{types}}" as="t" hint-placeholder-count="6">
-          <button onClick="{{t.pick}}" style="min-height: 104px; border-radius: 20px; border: 2px solid #CFD8D4; background: #FFFFFF; color: #121A17; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 8px; font-size: 18px; font-weight: 700; text-align: center">
-            <span style="width: 44px; height: 44px; border-radius: 12px; background: #E1EFEB; color: {{accent}}; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700">{{t.mark}}</span>{{t.label}}</button>
+          <button onClick="{{t.pick}}" style="min-height: 104px; border-radius: 24px; border: 2px solid #E2DEEE; background: #FFFFFF; color: #1A1730; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 8px; font-size: 18px; font-weight: 700; text-align: center">
+            <span style="width: 44px; height: 44px; border-radius: 12px; background: #ECEAFE; color: {{accent}}; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700">{{t.mark}}</span>{{t.label}}</button>
         </sc-for>
       </div>
     </sc-if>
 
     <sc-if value="{{isHow}}" hint-placeholder-val="{{false}}">
-      <span style="font-size: 18px; color: #3F4A47">{{howKicker}}</span>
+      <span style="font-size: 18px; color: #4D4A63">{{howKicker}}</span>
       <h1 style="margin: 0; font-size: 30px; font-weight: 700">¿Cómo lo querés cargar?</h1>
-      <button onClick="{{startAudio}}" style="min-height: 88px; border-radius: 20px; border: none; background: {{accent}}; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
+      <button onClick="{{startAudio}}" style="min-height: 88px; border-radius: 24px; border: none; background: {{accent}}; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Hablar</button>
-      <button onClick="{{startPhoto}}" style="min-height: 88px; border-radius: 20px; border: 2px solid #CFD8D4; background: #FFFFFF; color: #121A17; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
+      <button onClick="{{startPhoto}}" style="min-height: 88px; border-radius: 24px; border: 2px solid #E2DEEE; background: #FFFFFF; color: #1A1730; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg>{{cur.photo}}</button>
-      <button onClick="{{startPhoto}}" style="min-height: 88px; border-radius: 20px; border: 2px solid #CFD8D4; background: #FFFFFF; color: #121A17; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
+      <button onClick="{{startPhoto}}" style="min-height: 88px; border-radius: 24px; border: 2px solid #E2DEEE; background: #FFFFFF; color: #1A1730; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 21px; font-weight: 700">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>Escribir</button>
     </sc-if>
 
@@ -59,16 +59,16 @@ button{font-family:inherit}
         </span>
       </div>
       <p style="margin: 0; font-size: 19px; line-height: 1.55; background: #FFFFFF; border-radius: 18px; padding: 16px">{{cur.said}}</p>
-      <button onClick="{{finish}}" style="min-height: 60px; border-radius: 16px; border: none; background: #121A17; color: #FFFFFF; font-size: 19px; font-weight: 700; cursor: pointer">Terminé</button>
+      <button onClick="{{finish}}" style="min-height: 60px; border-radius: 16px; border: none; background: #1A1730; color: #FFFFFF; font-size: 19px; font-weight: 700; cursor: pointer">Terminé</button>
     </sc-if>
 
     <sc-if value="{{isReview}}" hint-placeholder-val="{{false}}">
       <h1 style="margin: 0; font-size: 30px; font-weight: 700">¿Está bien así?</h1>
-      <div style="background: #FFFFFF; border: 1.5px solid #CFD8D4; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
-        <span style="font-size: 17px; color: #3F4A47">{{cur.kicker}}</span>
+      <div style="background: #FFFFFF; border: 1px solid #ECE9F5; box-shadow: 0 2px 10px rgba(26,23,48,0.07); border-radius: 24px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 17px; color: #4D4A63">{{cur.kicker}}</span>
         <span style="font-size: 24px; font-weight: 700">{{cur.title}}</span>
         <span style="font-size: 19px">{{cur.line1}}</span>
-        <span style="font-size: 18px; color: #3F4A47">{{cur.line2}}</span>
+        <span style="font-size: 18px; color: #4D4A63">{{cur.line2}}</span>
       </div>
 
       <sc-if value="{{askTurno}}" hint-placeholder-val="{{false}}">
@@ -104,24 +104,24 @@ button{font-family:inherit}
     </sc-if>
 
     <sc-if value="{{isSaved}}" hint-placeholder-val="{{false}}">
-      <div role="status" style="background: #E1EFEB; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 12px; margin-top: 12px">
+      <div role="status" style="background: #ECEAFE; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 12px; margin-top: 12px">
         <span style="font-size: 24px; font-weight: 700">Guardado</span>
         <span style="font-size: 19px; line-height: 1.5">{{savedText}}</span>
         <a href="Main.dc.html" style="min-height: 56px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center">Volver al inicio</a>
-        <button onClick="{{reset}}" style="min-height: 52px; border: none; background: transparent; color: #121A17; font-size: 18px; font-weight: 700; text-decoration: underline; cursor: pointer">Cargar otra cosa</button>
+        <button onClick="{{reset}}" style="min-height: 52px; border: none; background: transparent; color: #1A1730; font-size: 18px; font-weight: 700; text-decoration: underline; cursor: pointer">Cargar otra cosa</button>
       </div>
     </sc-if>
   </main>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0B5A4C","options":["#0B5A4C","#234A87","#5B3289"]},"$preview":{"width":390,"height":844}}'>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#4433C9","options":["#4433C9","#4433C9","#C2410C"]},"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = { step: 'what', type: 'turno', owner: 'juan', freq: 'dia', turno: null, fromTurno: false };
   }
   renderVals() {
-    const accent = this.props.accent ?? '#0B5A4C';
+    const accent = this.props.accent ?? '#4433C9';
     const s = this.state;
     const TURNOS = {
       derm: { label: 'Dermatología', sub: 'Viernes 30 de octubre · Dra. Sofía Paz', note: 'Indicó una crema y control en 3 meses' },
@@ -152,7 +152,7 @@ class Component extends DCLogic {
         line2: 'Le dio una crema · volver en 3 meses',
         done: tu ? (s.turno === 'nuevo' ? 'Creamos el turno y guardamos cómo le fue.' : 'Guardamos cómo le fue en el turno de ' + tu.label + '.') : '' };
     }
-    const chip = (on) => 'min-height: 56px; border-radius: 14px; font-size: 18px; font-weight: 700; cursor: pointer; ' + (on ? 'background: #121A17; color: #FFFFFF; border: 2px solid #121A17;' : 'background: #FFFFFF; color: #121A17; border: 2px solid #CFD8D4;');
+    const chip = (on) => 'min-height: 56px; border-radius: 14px; font-size: 18px; font-weight: 700; cursor: pointer; ' + (on ? 'background: #1A1730; color: #FFFFFF; border: 2px solid #1A1730;' : 'background: #FFFFFF; color: #1A1730; border: 2px solid #E2DEEE;');
     const order = ['turno', 'consulta', 'estudio', 'compra', 'gasto', 'tarea'];
     const types = order.map((id) => ({ label: T[id].label, mark: T[id].mark, pick: () => this.setState({ type: id, step: 'how', turno: null }) }));
     const names = { yo: 'Yo', juan: 'Juan', laura: 'Laura', none: 'Nadie todavía' };
@@ -169,8 +169,8 @@ class Component extends DCLogic {
       return {
         label: TURNOS[id].label, sub: TURNOS[id].sub, pressed: on ? 'true' : 'false',
         pick: () => this.setState({ turno: id }),
-        style: 'min-height: 72px; border-radius: 16px; padding: 10px 16px; cursor: pointer; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; text-align: left; ' + (on ? 'background: #121A17; color: #FFFFFF; border: 2px solid #121A17;' : 'background: #FFFFFF; color: #121A17; border: 2px solid #CFD8D4;'),
-        subStyle: 'font-size: 16px; ' + (on ? 'color: #E3E8E6;' : 'color: #3F4A47;')
+        style: 'min-height: 72px; border-radius: 16px; padding: 10px 16px; cursor: pointer; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; text-align: left; ' + (on ? 'background: #1A1730; color: #FFFFFF; border: 2px solid #1A1730;' : 'background: #FFFFFF; color: #1A1730; border: 2px solid #E2DEEE;'),
+        subStyle: 'font-size: 16px; ' + (on ? 'color: #EEECF5;' : 'color: #4D4A63;')
       };
     });
     const askTurno = s.type === 'consulta' && !s.fromTurno;
@@ -186,7 +186,7 @@ class Component extends DCLogic {
       savedText: cur.done + ' Le avisamos a la familia.',
       cantSave,
       saveLabel: cantSave ? 'Elegí de qué turno es' : 'Sí, guardar',
-      saveStyle: 'min-height: 60px; border-radius: 16px; border: none; font-size: 19px; font-weight: 700; ' + (cantSave ? 'background: #DCE3E0; color: #3F4A47; cursor: not-allowed;' : 'background: ' + accent + '; color: #FFFFFF; cursor: pointer;'),
+      saveStyle: 'min-height: 60px; border-radius: 16px; border: none; font-size: 19px; font-weight: 700; ' + (cantSave ? 'background: #E9E6F3; color: #4D4A63; cursor: not-allowed;' : 'background: ' + accent + '; color: #FFFFFF; cursor: pointer;'),
       startAudio: () => this.setState({ step: 'recording' }),
       startPhoto: () => this.setState({ step: 'review' }),
       finish: () => this.setState({ step: 'review' }),

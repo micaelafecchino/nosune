@@ -15,8 +15,9 @@ Para verlo e interactuar hay dos opciones:
 
 La app la van a usar sobre todo personas grandes, así que:
 
-- Letra grande (texto principal de 17–18 px, nada por debajo de 15 px) con la tipografía Atkinson Hyperlegible, pensada para baja visión.
+- Letra grande (texto principal de 17–18 px, nada por debajo de 15 px) con la tipografía Lexend, pensada para leer con facilidad.
 - Alto contraste y botones de al menos 56 px de alto.
+- Paleta: índigo (#4433C9) como color principal, coral para lo que necesita atención, rojo solo para emergencia; fondo lavanda muy claro y tarjetas blancas con sombra suave.
 - Una sola idea por tarjeta, pocas cosas por pantalla y palabras simples ("Va con Juan", "Le toca a Laura").
 - Sin scroll horizontal ni menús desplegables.
 - "Solo lo mío" en Inicio, Turnos, Diario y Compras para ver rápido lo que te toca.

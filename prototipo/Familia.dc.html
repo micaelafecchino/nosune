@@ -9,18 +9,18 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0}
 main>*{flex-shrink:0}
-a{color:#0B5A4C;text-decoration:none}a:hover{color:#08453A}
+a{color:#4433C9;text-decoration:none}a:hover{color:#2E2391}
 button{font-family:inherit}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F2F4F3; color: #121A17; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; overflow: hidden">
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F5F3FA; color: #1A1730; font-family: 'Lexend', system-ui, sans-serif; overflow: hidden">
 
   <header style="padding: 48px 12px 4px">
-    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #121A17; font-size: 18px; font-weight: 700">
+    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #1A1730; font-size: 18px; font-weight: 700">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Volver</a>
   </header>
 
@@ -32,51 +32,51 @@ button{font-family:inherit}
         <span style="{{p.avatar}}">{{p.initial}}</span>
         <span style="flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left">
           <span style="font-size: 20px; font-weight: 700">{{p.name}}</span>
-          <span style="font-size: 17px; color: #3F4A47">{{p.desc}}</span>
+          <span style="font-size: 17px; color: #4D4A63">{{p.desc}}</span>
         </span>
       </button>
     </sc-for>
 
-    <a href="NuevoPerfil.dc.html" style="min-height: 56px; border-radius: 16px; border: 2px dashed #9AA6A2; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #121A17">+ Agregar a alguien que cuido</a>
+    <a href="NuevoPerfil.dc.html" style="min-height: 56px; border-radius: 16px; border: 2px dashed #A7A3BF; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #1A1730">+ Agregar a alguien que cuido</a>
 
-    <section aria-labelledby="ayudan" style="background: #FFFFFF; border: 1.5px solid #CFD8D4; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 12px; margin-top: 6px">
+    <section aria-labelledby="ayudan" style="background: #FFFFFF; border: 1px solid #ECE9F5; box-shadow: 0 2px 10px rgba(26,23,48,0.07); border-radius: 24px; padding: 18px; display: flex; flex-direction: column; gap: 12px; margin-top: 6px">
       <h2 id="ayudan" style="margin: 0; font-size: 21px; font-weight: 700">Quién ayuda con {{sel.name}}</h2>
       <sc-for list="{{sel.collabs}}" as="c" hint-placeholder-count="2">
-        <div style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 12px; border-bottom: 1.5px solid #E3E8E6">
+        <div style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 12px; border-bottom: 1.5px solid #EEECF5">
           <span style="font-size: 19px; font-weight: 700">{{c.name}}</span>
-          <span style="font-size: 17px; color: #3F4A47">{{c.role}}</span>
+          <span style="font-size: 17px; color: #4D4A63">{{c.role}}</span>
         </div>
       </sc-for>
       <sc-if value="{{sel.canInvite}}" hint-placeholder-val="{{true}}">
         <button style="min-height: 56px; border-radius: 14px; border: none; background: {{accent}}; color: #FFFFFF; font-size: 18px; font-weight: 700; cursor: pointer">Invitar a alguien</button>
       </sc-if>
       <sc-if value="{{sel.cannotInvite}}" hint-placeholder-val="{{false}}">
-        <span style="font-size: 17px; color: #3F4A47">Solo Héctor puede invitar a otras personas.</span>
+        <span style="font-size: 17px; color: #4D4A63">Solo Héctor puede invitar a otras personas.</span>
       </sc-if>
     </section>
 
     <sc-if value="{{sel.hasFolder}}" hint-placeholder-val="{{false}}">
-      <a href="Carpeta.dc.html" style="min-height: 64px; border-radius: 16px; background: #FFFFFF; border: 1.5px solid #CFD8D4; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; font-size: 18px; font-weight: 700; color: #121A17">Carpeta: Cáncer de mama
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3F4A47" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+      <a href="Carpeta.dc.html" style="min-height: 64px; border-radius: 16px; background: #FFFFFF; border: 1px solid #ECE9F5; box-shadow: 0 2px 10px rgba(26,23,48,0.07); display: flex; align-items: center; justify-content: space-between; padding: 0 18px; font-size: 18px; font-weight: 700; color: #1A1730">Carpeta: Cáncer de mama
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4D4A63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
     </sc-if>
 
-    <div style="background: #FFFFFF; border: 1.5px solid #CFD8D4; border-radius: 20px; display: flex; flex-direction: column">
-      <a href="Ficha.dc.html" style="min-height: 64px; border-bottom: 1.5px solid #E3E8E6; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; font-size: 18px; font-weight: 700; color: #121A17">Ficha de emergencia
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3F4A47" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
-      <button style="min-height: 64px; border: none; background: transparent; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; font-size: 18px; font-weight: 700; color: #121A17; cursor: pointer">Conectar WhatsApp y email
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3F4A47" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+    <div style="background: #FFFFFF; border: 1px solid #ECE9F5; box-shadow: 0 2px 10px rgba(26,23,48,0.07); border-radius: 24px; display: flex; flex-direction: column">
+      <a href="Ficha.dc.html" style="min-height: 64px; border-bottom: 1.5px solid #EEECF5; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; font-size: 18px; font-weight: 700; color: #1A1730">Ficha de emergencia
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4D4A63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+      <button style="min-height: 64px; border: none; background: transparent; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; font-size: 18px; font-weight: 700; color: #1A1730; cursor: pointer">Conectar WhatsApp y email
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4D4A63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
   </main>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0B5A4C","options":["#0B5A4C","#234A87","#5B3289"]},"$preview":{"width":390,"height":844}}'>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#4433C9","options":["#4433C9","#4433C9","#C2410C"]},"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = { who: 'rosa' };
   }
   renderVals() {
-    const accent = this.props.accent ?? '#0B5A4C';
+    const accent = this.props.accent ?? '#4433C9';
     const defs = [
       { id: 'yo', name: 'Yo', initial: 'Y', desc: 'Mi propia historia', canInvite: true, hasFolder: true,
         collabs: [{ name: 'Juan', role: 'Solo ve la carpeta de cáncer' }] },
@@ -93,8 +93,8 @@ class Component extends DCLogic {
         ...p,
         pressed: on ? 'true' : 'false',
         pick: () => this.setState({ who: p.id }),
-        row: 'display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 18px; cursor: pointer; color: #121A17; background: #FFFFFF; min-height: 76px; ' + (on ? 'border: 3px solid ' + accent + ';' : 'border: 2px solid #CFD8D4;'),
-        avatar: 'width: 48px; height: 48px; border-radius: 999px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 21px; ' + (on ? 'background: ' + accent + '; color: #FFFFFF;' : 'background: #E3E8E6; color: #121A17;')
+        row: 'display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 18px; cursor: pointer; color: #1A1730; background: #FFFFFF; min-height: 76px; ' + (on ? 'border: 3px solid ' + accent + ';' : 'border: 2px solid #E2DEEE;'),
+        avatar: 'width: 48px; height: 48px; border-radius: 999px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 21px; ' + (on ? 'background: ' + accent + '; color: #FFFFFF;' : 'background: #EEECF5; color: #1A1730;')
       };
     });
     const s = defs.find((p) => p.id === this.state.who);

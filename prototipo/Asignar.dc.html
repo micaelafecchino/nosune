@@ -9,18 +9,18 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0}
 main>*{flex-shrink:0}
-a{color:#0B5A4C;text-decoration:none}a:hover{color:#08453A}
+a{color:#4433C9;text-decoration:none}a:hover{color:#2E2391}
 button{font-family:inherit}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F2F4F3; color: #121A17; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; overflow: hidden">
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F5F3FA; color: #1A1730; font-family: 'Lexend', system-ui, sans-serif; overflow: hidden">
 
   <header style="padding: 48px 12px 4px">
-    <a href="Consulta.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #121A17; font-size: 18px; font-weight: 700">
+    <a href="Consulta.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #1A1730; font-size: 18px; font-weight: 700">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Cerrar</a>
   </header>
 
@@ -33,7 +33,7 @@ button{font-family:inherit}
         <button onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="{{o.row}}">
           <span style="flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left">
             <span style="font-size: 21px; font-weight: 700">{{o.name}}</span>
-            <span style="font-size: 17px; color: #3F4A47">{{o.load}}</span>
+            <span style="font-size: 17px; color: #4D4A63">{{o.load}}</span>
           </span>
           <span style="{{o.radio}}"></span>
         </button>
@@ -42,7 +42,7 @@ button{font-family:inherit}
     </sc-if>
 
     <sc-if value="{{saved}}" hint-placeholder-val="{{false}}">
-      <div role="status" style="background: #E1EFEB; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <div role="status" style="background: #ECEAFE; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
         <span style="font-size: 24px; font-weight: 700">Listo</span>
         <span style="font-size: 19px; line-height: 1.5">{{summary}}</span>
         <a href="Main.dc.html" style="min-height: 56px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center">Volver al inicio</a>
@@ -51,14 +51,14 @@ button{font-family:inherit}
   </main>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#0B5A4C","options":["#0B5A4C","#234A87","#5B3289"]},"$preview":{"width":390,"height":844}}'>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#4433C9","options":["#4433C9","#4433C9","#C2410C"]},"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = { owner: null, saved: false };
   }
   renderVals() {
-    const accent = this.props.accent ?? '#0B5A4C';
+    const accent = this.props.accent ?? '#4433C9';
     const s = this.state;
     const people = [
       { id: 'yo', name: 'Yo', load: 'Tenés 1 cosa pendiente' },
@@ -71,8 +71,8 @@ class Component extends DCLogic {
         ...p,
         pressed: on ? 'true' : 'false',
         pick: () => this.setState({ owner: p.id }),
-        row: 'display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 18px; cursor: pointer; color: #121A17; background: #FFFFFF; min-height: 80px; ' + (on ? 'border: 3px solid ' + accent + ';' : 'border: 2px solid #CFD8D4;'),
-        radio: 'width: 30px; height: 30px; border-radius: 999px; flex-shrink: 0; box-sizing: border-box; ' + (on ? 'border: 9px solid ' + accent + ';' : 'border: 3px solid #6B7773;')
+        row: 'display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 18px; cursor: pointer; color: #1A1730; background: #FFFFFF; min-height: 80px; ' + (on ? 'border: 3px solid ' + accent + ';' : 'border: 2px solid #E2DEEE;'),
+        radio: 'width: 30px; height: 30px; border-radius: 999px; flex-shrink: 0; box-sizing: border-box; ' + (on ? 'border: 9px solid ' + accent + ';' : 'border: 3px solid #6E6A88;')
       };
     });
     const names = { yo: 'Te encargás vos', juan: 'Se encarga Juan', laura: 'Se encarga Laura' };
@@ -84,7 +84,7 @@ class Component extends DCLogic {
       save: () => { if (this.state.owner) this.setState({ saved: true }); },
       cantSave,
       saveLabel: cantSave ? 'Elegí a una persona' : 'Guardar',
-      saveStyle: 'min-height: 60px; border-radius: 16px; border: none; font-size: 19px; font-weight: 700; margin-top: 6px; ' + (cantSave ? 'background: #DCE3E0; color: #3F4A47; cursor: not-allowed;' : 'background: ' + accent + '; color: #FFFFFF; cursor: pointer;')
+      saveStyle: 'min-height: 60px; border-radius: 16px; border: none; font-size: 19px; font-weight: 700; margin-top: 6px; ' + (cantSave ? 'background: #E9E6F3; color: #4D4A63; cursor: not-allowed;' : 'background: ' + accent + '; color: #FFFFFF; cursor: pointer;')
     };
   }
 }

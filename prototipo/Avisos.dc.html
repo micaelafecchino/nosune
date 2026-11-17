@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Nosune · Avisos</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+main>*{flex-shrink:0}
+a{color:#4433C9;text-decoration:none}a:hover{color:#2E2391}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F5F3FA; color: #1A1730; font-family: 'Lexend', system-ui, sans-serif; overflow: hidden">
+  <header style="padding: 48px 20px 4px; min-height: 52px; display: flex; align-items: center">
+    <span style="font-size: 17px; font-weight: 600; color: #4D4A63">Paso 3 de 3</span>
+  </header>
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 28px; display: flex; flex-direction: column; gap: 14px">
+    <span style="width: 80px; height: 80px; border-radius: 24px; background: linear-gradient(135deg, #4433C9 0%, #6D4FE0 100%); color: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 22px rgba(68,51,201,0.3); margin-top: 8px">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span>
+    <h1 style="margin: 0; font-size: 30px; line-height: 1.2; font-weight: 700">¿Te avisamos cuando haya algo para hacer?</h1>
+    <p style="margin: 0; font-size: 18px; color: #4D4A63">Solo lo importante. Por ejemplo:</p>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <div style="background: #FFFFFF; border: 1px solid #ECE9F5; box-shadow: 0 2px 10px rgba(26,23,48,0.07); border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; color: #4D4A63">Nosune · ahora</span><span style="font-size: 18px; font-weight: 600">Mañana a las 10:30 es el turno de Cardiología. Va Juan.</span></div>
+      <div style="background: #FFFFFF; border: 1px solid #ECE9F5; box-shadow: 0 2px 10px rgba(26,23,48,0.07); border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; color: #4D4A63">Nosune · 8:05</span><span style="font-size: 18px; font-weight: 600">Juan marcó el Enalapril de las 8.</span></div>
+      <div style="background: #FFF1EA; border: 2px solid #F4B393; border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; color: #9A3412">Nosune · ayer</span><span style="font-size: 18px; font-weight: 600">Nadie se encarga de pedir el turno con traumatología.</span></div>
+    </div>
+    <a href="InicioDia1.dc.html" style="min-height: 60px; border-radius: 16px; background: #4433C9; color: #FFFFFF; font-size: 19px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 8px">Sí, avisame</a>
+    <a href="InicioDia1.dc.html" style="min-height: 48px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 700; color: #1A1730; text-decoration: underline">Ahora no</a>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

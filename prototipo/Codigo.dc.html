@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Nosune · Código</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+main>*{flex-shrink:0}
+a{color:#4433C9;text-decoration:none}a:hover{color:#2E2391}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F5F3FA; color: #1A1730; font-family: 'Lexend', system-ui, sans-serif; overflow: hidden">
+  <header style="padding: 48px 12px 4px">
+    <a href="CrearCuenta.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #1A1730; font-size: 18px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Volver</a>
+  </header>
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 28px; display: flex; flex-direction: column; gap: 14px">
+    <h1 style="margin: 0; font-size: 30px; line-height: 1.2; font-weight: 700">Te mandamos un código por SMS</h1>
+    <p style="margin: 0; font-size: 18px; color: #4D4A63">Al +54 11 [NÚMERO]. Llega en unos segundos.</p>
+    <div role="group" aria-label="Código de 6 números" style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin-top: 10px">
+      <span style="height: 64px; border-radius: 14px; background: #FFFFFF; border: 2px solid #4433C9; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700">4</span>
+      <span style="height: 64px; border-radius: 14px; background: #FFFFFF; border: 2px solid #4433C9; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700">8</span>
+      <span style="height: 64px; border-radius: 14px; background: #FFFFFF; border: 2px solid #4433C9; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700">2</span>
+      <span style="height: 64px; border-radius: 14px; background: #FFFFFF; border: 2px solid #4433C9; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700">1</span>
+      <span style="height: 64px; border-radius: 14px; background: #FFFFFF; border: 2px solid #E2DEEE"></span>
+      <span style="height: 64px; border-radius: 14px; background: #FFFFFF; border: 2px solid #E2DEEE"></span>
+    </div>
+    <button style="align-self: flex-start; min-height: 48px; padding: 0; border: none; background: transparent; color: #1A1730; font-size: 17px; font-weight: 700; text-decoration: underline; cursor: pointer">No me llegó, mandarlo de nuevo</button>
+    <a href="AQuien.dc.html" style="min-height: 60px; border-radius: 16px; background: #4433C9; color: #FFFFFF; font-size: 19px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 10px">Seguir</a>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

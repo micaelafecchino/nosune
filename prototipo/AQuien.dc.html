@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Nosune · A quién vas a cuidar</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+main>*{flex-shrink:0}
+a{color:#4433C9;text-decoration:none}a:hover{color:#2E2391}
+button,input{font-family:inherit}
+input::placeholder{color:#5E5A78}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F5F3FA; color: #1A1730; font-family: 'Lexend', system-ui, sans-serif; overflow: hidden">
+  <header style="padding: 48px 12px 4px">
+    <a href="Codigo.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #1A1730; font-size: 18px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Volver</a>
+  </header>
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 28px; display: flex; flex-direction: column; gap: 14px">
+    <h1 style="margin: 0; font-size: 30px; line-height: 1.2; font-weight: 700">¿A quién vas a cuidar con Nosune?</h1>
+    <sc-for list="{{kinds}}" as="k" hint-placeholder-count="3">
+      <button onClick="{{k.pick}}" aria-pressed="{{k.pressed}}" style="{{k.card}}">
+        <span style="flex: 1; display: flex; flex-direction: column; gap: 2px; text-align: left">
+          <span style="font-size: 20px; font-weight: 700">{{k.title}}</span>
+          <span style="font-size: 17px; color: #4D4A63">{{k.text}}</span>
+        </span>
+        <span style="{{k.radio}}"></span>
+      </button>
+    </sc-for>
+    <sc-if value="{{showFamily}}" hint-placeholder-val="{{true}}">
+      <div role="group" aria-labelledby="rel" style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px">
+        <span id="rel" style="font-size: 18px; font-weight: 700">¿Quién es?</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          <sc-for list="{{rels}}" as="r" hint-placeholder-count="5">
+            <button onClick="{{r.pick}}" aria-pressed="{{r.pressed}}" style="{{r.style}}">{{r.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+      <label style="display: flex; flex-direction: column; gap: 8px">
+        <span style="font-size: 18px; font-weight: 700">¿Cómo se llama?</span>
+        <input type="text" value="Rosa" style="min-height: 58px; padding: 0 16px; border-radius: 16px; border: 2px solid #A7A3BF; background: #FFFFFF; font-size: 19px; color: #1A1730">
+      </label>
+    </sc-if>
+    <a href="Bienvenida.dc.html" style="min-height: 60px; border-radius: 16px; background: #4433C9; color: #FFFFFF; font-size: 19px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 6px">Seguir</a>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { kind: 'familia', rel: 'mama' };
+  }
+  renderVals() {
+    const s = this.state;
+    const kinds = [
+      { id: 'familia', title: 'A un familiar', text: 'Mamá, papá, un hijo, un abuelo…' },
+      { id: 'yo', title: 'A mí', text: 'Mi propia salud' },
+      { id: 'ambos', title: 'A los dos', text: 'Mi salud y la de un familiar' }
+    ].map((k) => {
+      const on = s.kind === k.id;
+      return {
+        ...k, pressed: on ? 'true' : 'false', pick: () => this.setState({ kind: k.id }),
+        card: 'display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-radius: 20px; cursor: pointer; color: #1A1730; background: #FFFFFF; min-height: 80px; ' + (on ? 'border: 3px solid #4433C9;' : 'border: 2px solid #E2DEEE;'),
+        radio: 'width: 30px; height: 30px; border-radius: 999px; flex-shrink: 0; box-sizing: border-box; ' + (on ? 'border: 9px solid #4433C9;' : 'border: 3px solid #6E6A88;')
+      };
+    });
+    const rels = [['mama', 'Mamá'], ['papa', 'Papá'], ['hijo', 'Hijo o hija'], ['abuelo', 'Abuelo o abuela'], ['otro', 'Otro']].map(([id, label]) => {
+      const on = s.rel === id;
+      return { label, pressed: on ? 'true' : 'false', pick: () => this.setState({ rel: id }), style: 'min-height: 48px; padding: 0 16px; border-radius: 999px; font-size: 17px; font-weight: 700; cursor: pointer; ' + (on ? 'background: #1A1730; color: #FFFFFF; border: 2px solid #1A1730;' : 'background: #FFFFFF; color: #1A1730; border: 2px solid #E2DEEE;') };
+    });
+    return { kinds, rels, showFamily: s.kind !== 'yo' };
+  }
+}
+</script>
+</body>
+</html>

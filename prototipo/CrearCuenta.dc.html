@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Nosune · Crear cuenta</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+main>*{flex-shrink:0}
+a{color:#4433C9;text-decoration:none}a:hover{color:#2E2391}
+button,input{font-family:inherit}
+input::placeholder{color:#5E5A78}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #F5F3FA; color: #1A1730; font-family: 'Lexend', system-ui, sans-serif; overflow: hidden">
+  <header style="padding: 48px 12px 4px">
+    <a href="Splash.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 10px; color: #1A1730; font-size: 18px; font-weight: 700">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Volver</a>
+  </header>
+  <main style="flex: 1; overflow-y: auto; padding: 4px 20px 28px; display: flex; flex-direction: column; gap: 14px">
+    <h1 style="margin: 0; font-size: 30px; font-weight: 700">Creá tu cuenta</h1>
+    <p style="margin: 0; font-size: 18px; color: #4D4A63">Es gratis y te lleva un minuto.</p>
+    <a href="AQuien.dc.html" style="min-height: 60px; border-radius: 16px; background: #FFFFFF; border: 2px solid #E2DEEE; color: #1A1730; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 8px">
+      <span style="width: 26px; height: 26px; border-radius: 999px; background: #ECEAFE; color: #4433C9; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700">G</span>Seguir con Google</a>
+    <a href="AQuien.dc.html" style="min-height: 60px; border-radius: 16px; background: #1A1730; color: #FFFFFF; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 12px">
+      <span style="width: 26px; height: 26px; border-radius: 999px; background: #FFFFFF; color: #1A1730; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700">A</span>Seguir con Apple</a>
+    <div style="display: flex; align-items: center; gap: 12px; margin: 6px 0">
+      <span style="flex: 1; height: 1px; background: #E2DEEE"></span><span style="font-size: 17px; color: #4D4A63">o con tu celular</span><span style="flex: 1; height: 1px; background: #E2DEEE"></span>
+    </div>
+    <label style="display: flex; flex-direction: column; gap: 8px">
+      <span style="font-size: 18px; font-weight: 700">Tu número de celular</span>
+      <span style="display: flex; align-items: center; gap: 10px; min-height: 60px; padding: 0 16px; border-radius: 16px; background: #FFFFFF; border: 2px solid #A7A3BF">
+        <span style="font-size: 19px; font-weight: 600; color: #4D4A63">+54</span>
+        <input type="tel" placeholder="11 1234 5678" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-size: 19px; color: #1A1730">
+      </span>
+    </label>
+    <a href="Codigo.dc.html" style="min-height: 60px; border-radius: 16px; background: #4433C9; color: #FFFFFF; font-size: 19px; font-weight: 700; display: flex; align-items: center; justify-content: center">Seguir</a>
+    <p style="margin: 6px 0 0; font-size: 16px; line-height: 1.5; color: #4D4A63; display: flex; gap: 10px; align-items: flex-start">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4433C9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Tus datos de salud son privados. Solo los ven las personas que vos invitás.</p>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

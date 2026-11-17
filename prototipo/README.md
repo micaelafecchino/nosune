@@ -1,6 +1,6 @@
 # Prototipo de diseño · v1
 
-Prototipo clickeable de la app mobile (20 pantallas de 390×844).
+Prototipo clickeable de la app mobile (29 pantallas de 390×844).
 
 ## Cómo verlo
 
@@ -24,6 +24,23 @@ La app la van a usar sobre todo personas grandes, así que:
 - "Solo lo mío" en Inicio, Turnos, Diario y Compras para ver rápido lo que te toca.
 - "Cómo le fue en el médico" siempre queda asociado a un turno: desde el turno ya va asociado; desde + Cargar se elige el turno antes de guardar.
 - Barra de abajo con Inicio, Turnos, un botón central grande **Cargar** (turno, consulta, estudio, remedio o compra, gasto, tarea que se repite cada día, semana o mes), Diario y Compras. Los perfiles se abren tocando el nombre arriba en el inicio.
+
+## Recorrido del usuario nuevo
+
+Una fila del canvas muestra la experiencia desde que alguien baja la app hasta que la usa todos los días. Se puede recorrer completa en Play, empezando por `Splash.dc.html`.
+
+| Archivo | Momento | Pantalla |
+|---|---|---|
+| `Splash.dc.html` | Día 0 | J1 · Entrada |
+| `CrearCuenta.dc.html` | Día 0 | J2 · Crear cuenta (Google, Apple o celular) |
+| `Codigo.dc.html` | Día 0 | J3 · Código por SMS |
+| `AQuien.dc.html` | Día 0 | J4 · A quién va a cuidar (un familiar, a sí mismo o los dos) |
+| `Bienvenida.dc.html` | Día 0 | J5 · Armar el perfil hablando: un audio y preguntas cortas en un chat |
+| `Invitar.dc.html` | Día 0 | J6 · Sumar a la familia, con permiso completo o restringido |
+| `Avisos.dc.html` | Día 0 | J7 · Activar avisos, con ejemplos de lo que va a recibir |
+| `InicioDia1.dc.html` | Día 1 | J8 · Primer inicio: lo que falta completar y el consejo del primer audio |
+| `InicioDia3.dc.html` | Día 3 | J9 · La app pregunta cómo le fue en el turno de ayer |
+| `ResumenSemana.dc.html` | Semana 1 | J10 · Resumen para toda la familia; de ahí sigue el inicio de siempre |
 
 ## Pantallas
 
